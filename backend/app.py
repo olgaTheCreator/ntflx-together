@@ -2,7 +2,7 @@ from sanic import Sanic, response
 from sanic_ext import Extend
 
 app = Sanic("netflix-together")
-app.config.CORS_ORIGINS = "http://0.0.0.0:8001"
+app.config.CORS_ORIGINS = "http://0.0.0.0:8000"
 Extend(app)
 
 @app.route("/api")
