@@ -1,15 +1,15 @@
 import * as esbuild from 'esbuild';
 
 let ctx = await esbuild.context({
-  entryPoints: ['src/main.tsx'],
+  entryPoints: ['./src/main.tsx'],
   bundle: true,
-  outdir: 'dist',
+  outdir: './dist',
 });
 
 await ctx.watch();
 
 let { host, port } = await ctx.serve({
-  servedir: 'dist',
+  servedir: './dist',
 });
 
 await esbuild.build({
