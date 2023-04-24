@@ -1,0 +1,37 @@
+{
+  "name": "esbuild-with-mhc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ojb <curylo.olga@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "dev:typecheck": "yarn tsc --noEmit --watch",
+    "dev:serve": "node esbuild.dev.mjs",
+    "start": "npm-run-all -p dev:typecheck dev:serve",
+    "build:typecheck": "yarn tsc --noEmit",
+    "build:esbuild": "node esbuild.mjs",
+    "build": "npm-run-all -s build:typecheck build:esbuild",
+    "eslint": "eslint",
+    "eslint:fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "@typescript-eslint/eslint-plugin": "5.59.0",
+    "@typescript-eslint/parser": "5.59.0",
+    "esbuild": "^0.17.18",
+    "eslint": "8.39.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  }
+}
