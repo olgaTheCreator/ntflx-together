@@ -1,5 +1,5 @@
 """main application file"""
-import sqlite3
+# import sqlite3
 
 from sanic import Sanic, response
 from sanic_ext import Extend
@@ -9,7 +9,7 @@ app = Sanic("netflix-together")
 app.config.CORS_ORIGINS = "http://0.0.0.0:8000"
 Extend(app)
 
-con = sqlite3.connect("movies.db")
+# con = sqlite3.connect("movies.db")
 
 
 @app.route("/api")
