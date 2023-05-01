@@ -1,6 +1,11 @@
 {
   "python.languageServer": "Pylance",
   "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.extraPaths": [
+    "/home/ojb/projects/ntflx-together",
+    "/home/ojb/.local/lib/python3.10/site-packages"
+  ],
   "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--extension-pkg-whitelist=pydantic"]
 }
