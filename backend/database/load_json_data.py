@@ -20,6 +20,6 @@ for i in range(0, 12):
         print("wasn't able to create dataframe")
     else:
         print(list(df.columns)) # type: ignore 
-        selected_df = df.loc[:, (["type","title", "link","posterURLs.154" , "seasonCount"])]
+        selected_df = df.loc[:, (["type","title", "imdbRating", "link","posterURLs.154" , "seasonCount"])]
         print(selected_df)
 
