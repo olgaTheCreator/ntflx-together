@@ -1,12 +1,12 @@
 """main application file"""
 # import sqlite3
 
-from sanic import Sanic, response
+from sanic import Sanic, response, Request
+from sanic.response import json
 from sanic_ext import Extend
-# import pandas as pd
 from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
-from database.dbconnection import PicturesExecutor # type: ignore
+from database.basemodelandexecutors import PicturesExecutor # type: ignore
 
 
 app = Sanic("netflix-together")
@@ -35,6 +35,11 @@ async def shutdown_mayim(app: Sanic):
 async def index(request: str):  # pylint: disable=unused-argument
     """Return json"""
     return response.json({"llo": "world!"})
+
+@app.route("/results")
+async def results(request: Request, executor: PicturesExecutor):
+    movies = await executor.select_results()
+    return json({"movies": [movie.dict() for movie in movies[:10]]})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=3000, dev=True) # pyright: reportUnknownMemberType=false
