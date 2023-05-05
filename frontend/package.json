@@ -27,6 +27,8 @@
     "eslint:fix": "eslint --fix"
   },
   "devDependencies": {
+    "@heroicons/react": "^2.0.17",
+    "@svgr/webpack": "^7.0.0",
     "@types/jest": "^29.5.1",
     "@typescript-eslint/eslint-plugin": "5.59.0",
     "@typescript-eslint/parser": "5.59.0",

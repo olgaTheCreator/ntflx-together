@@ -10,5 +10,9 @@
   "python.linting.pylintArgs": ["--extension-pkg-whitelist=pydantic"],
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
