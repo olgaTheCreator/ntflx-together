@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS motion_pictures(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    imdb_id STR PRIMARY KEY,
     media_type TEXT,
     title TEXT,
     link TEXT,
     imdb_rating INTEGER,
-    poster_url TEXT,
+    poster_url_342 TEXT,
+    poster_url_780 TEXT,
     season_count INTEGER
 );

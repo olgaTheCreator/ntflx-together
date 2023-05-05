@@ -23,10 +23,10 @@ export function App() {
   // return <div>{`${JSON.stringify({ data, isLoading, error })}`}</div>;
   return (
     <>
-      <ButtonSwipe variant="green">
+      <ButtonSwipe variant="red">
         <IconSwipeLeft styles="h-4 w-4 md:h-9 md:w-9" />
       </ButtonSwipe>
-      <ButtonSwipe variant="red">
+      <ButtonSwipe variant="green">
         <IconSwipeRight styles="h-4 w-4 md:h-9 md:w-9" />
       </ButtonSwipe>
       <div className="text-lg font-bold text-warning-400">{JSON.stringify(data)}</div>

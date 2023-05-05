@@ -16,13 +16,16 @@ async def insert_data_into_db():
     data = pictures_data_to_dataframe()
     if data is not None:
         for row in data:
-            media_type = row["type"]
-            title = row["title"]
-            imdb_rating = int(row["imdbRating"])
-            link = row["link"]
-            poster_url = row["posterURLs.154"]
-            season_count = int(row["seasonCount"])
-            await executor.insert_pictures(media_type, title, imdb_rating, link, poster_url, season_count)
+            imdb_id: str = row["imdbId"]
+            media_type: str = row["type"]
+            title:str = row["title"]
+            imdb_rating:int = int(row["imdbRating"])
+            link:str = row["link"]
+            poster_url_342:str = row["posterURLs.342"]
+            poster_url_780:str = row["posterURLs.780"]
+            season_count:int = int(row["seasonCount"])
+            await executor.insert_pictures(imdb_id, media_type, title, imdb_rating, link, 
+                                           poster_url_342,poster_url_780, season_count)
     print(await executor.select_results())
     await pool.close()
 
