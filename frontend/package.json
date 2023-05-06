@@ -17,7 +17,7 @@
   "scripts": {
     "dev:typecheck": "yarn tsc --watch",
     "dev:serve": "node esbuild.dev.mjs",
-    "dev:css": "npx tailwindcss -i ./src/app.css -o ./dist/app.css --minify --watch",
+    "dev:css": "npx tailwindcss-cli -i ./src/app.css -o ./dist/app.css --minify --watch",
     "start": "npm-run-all -p dev:typecheck dev:serve dev:css",
     "build:typecheck": "yarn tsc",
     "build:esbuild": "node esbuild.mjs",

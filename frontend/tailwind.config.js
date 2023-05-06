@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './dist/index.html'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './dist/index.html', './src/components/**/*.tsx'],
+  safelist: [
+    {
+      pattern: /bg-(red|green|blue)-(100|500|700)/,
+    },
+  ],
   theme: {
     extend: {
       colors: {
@@ -25,6 +30,7 @@ module.exports = {
           700: '#3E7951',
           800: '#27623F',
           900: '#175134',
+          DEFAULT: '#7ca982',
         },
         red: {
           100: '#FCE2D9',
@@ -36,6 +42,7 @@ module.exports = {
           700: '#901F40',
           800: '#741338',
           900: '#600B33',
+          DEFAULT: '#c83e4d',
         },
         white: '#FAFAFA',
         orange: '#FF934F',
