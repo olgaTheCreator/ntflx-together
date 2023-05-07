@@ -1,27 +1,15 @@
-// import * as React from 'react';
-import { ButtonSwipe } from './buttons/ButtonSwipe';
-import { IconSwipeLeft } from './icons/IconSwipeLeft';
-import { IconSwipeRight } from './icons/IconSwipeRight';
 import img from '../assets/Netflix_Symbol_RGB.png';
 
 export const MovieCard = () => {
   return (
     <>
-      <div className="relative m-5 flex w-full flex-wrap justify-center overflow-hidden rounded">
-        <div className="absolute flex w-full justify-between">
-          <ButtonSwipe variant="red">
-            <IconSwipeLeft styles="h-11 w-11 md:h-9 md:w-9" />
-          </ButtonSwipe>
-          <ButtonSwipe variant="green">
-            <IconSwipeRight styles="h-11 w-11 md:h-9 md:w-9" />
-          </ButtonSwipe>
-        </div>
+      <div className="relative m-5 flex h-full max-w-sm flex-wrap justify-center overflow-hidden rounded">
         <img
-          className="w-full"
+          className="max-h-3/4 w-full"
           src="https://image.tmdb.org/t/p/w780/splV83B3CqMCbHUunoyaUoRUM60.jpg"
           alt="Sunset in the mountains"
         />
-        <div className="flex h-48 justify-between py-4 text-white">
+        <div className="flex max-h-48 justify-between py-4 text-white">
           <img className="object-scale-down" src={img} alt="Sunset  mountains" />
           <h1 className="text-4xl font-medium">The Coldest Sunset</h1>
           {/* <p className="text-base text-gray-700">

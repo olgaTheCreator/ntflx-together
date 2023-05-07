@@ -21,8 +21,11 @@ export function App() {
   // return <div>{`${JSON.stringify({ data, isLoading, error })}`}</div>;
   return (
     // {/* <div className="text-lg font-bold text-warning-400">{JSON.stringify(data)}</div> */}
-    <div className="flex justify-center bg-blue-500">
-      <MovieCard />
+    <div className="flex h-screen max-h-screen justify-around">
+      <div className="flex h-5/6 justify-center bg-blue-500">
+        <MovieCard />
+      </div>
+      <div className="h-40 bg-orange">{}</div>
     </div>
   );
 }
