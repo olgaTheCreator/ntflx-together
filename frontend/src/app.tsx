@@ -22,10 +22,10 @@ export function App() {
   return (
     // {/* <div className="text-lg font-bold text-warning-400">{JSON.stringify(data)}</div> */}
     <div className="flex h-screen max-h-screen justify-around">
-      <div className="flex h-5/6 justify-center bg-blue-500">
+      <div className="flex h-7/8 justify-center bg-blue-500">
         <MovieCard />
       </div>
-      <div className="h-40 bg-orange">{}</div>
+      <div className="h-20 bg-orange">{''}</div>
     </div>
   );
 }
