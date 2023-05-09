@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { SwipeAmovieContainer } from './components/SwipeAmovieContainer';
+import { LovedMoviesContainer } from './components/LovedMoviesContainer';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
 // new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -15,6 +16,7 @@ export function App() {
         <div className="flex h-7/8 justify-center">
           <Routes>
             <Route path="/" element={<SwipeAmovieContainer />} />
+            <Route path="/loved" element={<LovedMoviesContainer />} />
             {/* <Route path="/products" element={<Products />} />
        <Route path="/about" element={<About />} /> */}
           </Routes>

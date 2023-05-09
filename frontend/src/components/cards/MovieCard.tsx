@@ -1,6 +1,7 @@
 import img from '../../assets/Netflix_Symbol.png';
 
 export interface MovieCardProps {
+  imdb_id: string;
   poster_url_780: string;
   title: string;
   media_type: 'series' | 'movie';
