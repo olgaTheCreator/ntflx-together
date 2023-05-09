@@ -38,10 +38,10 @@ async def index(request: str):  # pylint: disable=unused-argument
     return response.json({"llo": "world!"})
 
 
-@app.route("/results")
+@app.route("/single")
 async def results(request: Request, executor: PicturesExecutor):
-    movies = await executor.select_results()
-    return json({"movies": [movie.dict() for movie in movies[:10]]})
+    motion_picture = await executor.select_results()
+    return json({"movie": motion_picture[0].dict()})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=3000, dev=True)
