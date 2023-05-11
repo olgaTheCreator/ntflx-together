@@ -7,10 +7,14 @@ interface SwipeAmovieProps {
 export const SwipeAmoviePres = ({ data }: SwipeAmovieProps) => {
   return (
     <>
-      <MovieCard {...data}>
-        {' '}
-        <SwipeButtonGroup />
-      </MovieCard>
+      <div className="h-screen max-h-screen max-w-md">
+        <div className="flex h-7/8 justify-center">
+          <MovieCard {...data}>
+            {' '}
+            <SwipeButtonGroup />
+          </MovieCard>
+        </div>
+      </div>
     </>
   );
 };

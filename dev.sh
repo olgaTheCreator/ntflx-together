@@ -1,3 +1,3 @@
 #!/bin/sh
 
-(cd frontend && yarn start) & (cd backend && pipenv run python server.py)
+(cd frontend && yarn start) & (cd backend && pipenv shell && python server.py)
