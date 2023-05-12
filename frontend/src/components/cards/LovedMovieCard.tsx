@@ -16,7 +16,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
   };
   return (
     <>
-      <div key={key} className="relative flex h-full flex-col overflow-hidden rounded p-2">
+      <div key={key} className="relative flex h-full flex-col overflow-hidden rounded px-2 py-2">
         {children}
         <div className="relative flex h-60 justify-center md:h-80">
           <img className="h-full object-cover object-center" src={poster_url_780} alt={title} />

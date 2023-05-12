@@ -8,7 +8,7 @@ export const SwipeAmoviePres = ({ data }: SwipeAmovieProps) => {
   return (
     <>
       <div className="h-screen max-h-screen max-w-md">
-        <div className="flex h-7/8 justify-center">
+        <div className="flex justify-center">
           <MovieCard {...data}>
             {' '}
             <SwipeButtonGroup />

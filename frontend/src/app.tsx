@@ -22,7 +22,7 @@ export function App() {
        <Route path="/about" element={<About />} /> */}
       </Routes>
       {/* </div> */}
-      <div className="fixed bottom-0 left-0 h-20 w-full bg-orange px-5"></div>
+      <div className="fixed bottom-0 left-0 h-14 w-full bg-orange px-5"></div>
       {/* // </div> */}
     </div>
   );
