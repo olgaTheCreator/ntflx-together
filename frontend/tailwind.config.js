@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ['Poppins'],
+      },
       height: {
         '1/8': '12.5%',
         '7/8': '87.5%',

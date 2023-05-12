@@ -10,7 +10,7 @@ export function App() {
   <></>;
 
   return (
-    <div className="flex justify-center bg-blue-500">
+    <div className="h-screen justify-center overflow-scroll bg-blue-500">
       {/* <div className="text-lg font-bold text-warning-400"></div> */}
       {/* <div className="flex h-screen max-h-screen max-w-md flex-col items-center justify-between">
         <div className="flex h-7/8 justify-center"> */}
