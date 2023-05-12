@@ -1,4 +1,5 @@
 import img from '../../assets/Netflix_Symbol.png';
+import { SwipeButtonGroup } from '../buttons/SwipeButtonsGroup';
 
 export interface MovieCardProps {
   imdb_id: string;
@@ -16,9 +17,12 @@ export const MovieCard = (props: MovieCardProps) => {
   };
   return (
     <>
-      <div className="relative m-5 flex flex-col overflow-hidden rounded">
-        {children}
-        <img className="h-auto max-w-full" src={poster_url_780} alt={title} />
+      <div className="relative m-5 flex h-5/6 flex-col">
+        <div className="relative max-h-fit ">
+          <img className="rounded-md object-scale-down" src={poster_url_780} alt={title} />
+          <div className="absolute top-0 h-4/5 w-full  bg-gradient-to-b from-black opacity-40 "></div>
+          <SwipeButtonGroup />
+        </div>
 
         <div className="mt-5 flex h-32 justify-start py-4 text-white">
           <img className="mr-5 max-h-20 basis-3/4 object-scale-down" src={img} alt="Netflix logo" />

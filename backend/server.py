@@ -41,12 +41,12 @@ async def index(request: str):  # pylint: disable=unused-argument
 @app.route("/loved")
 async def results(request: Request, executor: PicturesExecutor):
     movies = await executor.select_results()
-    return json({"movies": [movie.dict() for movie in movies[:10]]})
+    return json({"movies": [movie.dict() for movie in movies[100:140]]})
 
 @app.route("/single")
 async def single(request: Request, executor: PicturesExecutor):
     movie = await executor.select_results()
-    return json({"movie": movie[0].dict()})
+    return json({"movie": movie[92].dict()})
 
 
 if __name__ == "__main__":
