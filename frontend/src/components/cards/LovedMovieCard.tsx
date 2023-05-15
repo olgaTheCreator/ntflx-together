@@ -1,8 +1,11 @@
 import img from '../../assets/Netflix_Symbol.png';
+import { ButtonPlay } from '../buttons/ButtonPlay';
+import { ButtonShare } from '../buttons/ButtonShare';
 
 export interface MovieCardProps {
   imdb_id: string;
   poster_url_780: string;
+  link: string;
   title: string;
   media_type: 'series' | 'movie';
   season_count: number;
@@ -10,7 +13,7 @@ export interface MovieCardProps {
 }
 
 export const LovedMovieCard = (props: MovieCardProps, key: string) => {
-  const { poster_url_780, title, media_type, season_count, ...rest } = props;
+  const { poster_url_780, link, title, media_type, season_count, ...rest } = props;
 
   return (
     <>
@@ -26,6 +29,12 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
         <div className="flex w-1/2 flex-col justify-between px-2 leading-normal">
           <div className="h-fulljustify-center overflow-x-hidden text-white">
             <h1 className="break-words pl-1 text-left text-xl font-medium">{title}</h1>
+          </div>
+          <div className="flex h-11 place-self-end text-white">
+            <form action={link} method="get">
+              <ButtonPlay />
+            </form>
+            <ButtonShare />
           </div>
         </div>
       </div>

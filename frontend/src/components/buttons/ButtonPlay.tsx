@@ -1,13 +1,13 @@
-export const ButtonNavPlay = () => {
+export const ButtonPlay = () => {
   return (
-    <button className="h-12 w-full  text-lg">
+    <button type="submit" className="mr-2 h-11  w-11  text-lg ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        fill="none"
+        fill="currentColor"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="h-10 w-full text-xs"
+        className="h-9 w-full fill-white text-xs"
       >
         <path
           strokeLinecap="round"

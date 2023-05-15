@@ -1,17 +1,19 @@
 import img from '../../assets/Netflix_Symbol.png';
 import { SwipeButtonGroup } from '../buttons/SwipeButtonsGroup';
+import { ButtonPlay } from '../buttons/ButtonPlay';
 
 export interface MovieCardProps {
   imdb_id: string;
   poster_url_780: string;
   title: string;
+  link: string;
   media_type: 'series' | 'movie';
   season_count: number;
   children?: React.ReactNode;
 }
 
 export const MovieCard = (props: MovieCardProps) => {
-  const { children, poster_url_780, title, media_type, season_count, ...rest } = props;
+  const { children, poster_url_780, link, title, media_type, season_count, ...rest } = props;
   const showMedia = (mediaType: string) => {
     return mediaType === 'movie' ? <span>{mediaType} </span> : <span>Seasons: {season_count}</span>;
   };
@@ -28,8 +30,11 @@ export const MovieCard = (props: MovieCardProps) => {
           <img className="mr-5 max-h-20 basis-3/4 object-scale-down" src={img} alt="Netflix logo" />
           <h1 className="basis-1/2 pl-1 text-3xl font-semibold">{title}</h1>
         </div>
-        <div>
-          <h2 className="mb-8 text-right  text-lg text-white">{showMedia(media_type)}</h2>
+        <div className="flex items-center justify-end divide-x-2 divide-white pb-4 text-white">
+          <form action={link} method="get">
+            <ButtonPlay />
+          </form>
+          <h2 className="pl-4 pr-2 text-lg text-white">{showMedia(media_type)}</h2>
         </div>
       </div>
     </>
