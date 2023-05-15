@@ -1,29 +1,37 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate} from 'react-router-dom';
 import { SwipeAmovieContainer } from './components/SwipeAmovieContainer';
 import { LovedMoviesContainer } from './components/LovedMoviesContainer';
 import { NavBottomContainer } from './components/NavBottomContainer';
-import { useCookies } from 'react-cookie';
-import { v4 as uuidv4 } from 'uuid';
+import { RegisterUserContainer } from './components/RegisterUserContainer';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
 // new EventSource('/esbuild').addEventListener('change', () => location.reload());
 
 export function App() {
-  const [cookies, setCookie] = useCookies(['ntflx_user']);
-  const [uuid, setUuid] = React.useState('');
-  console.log(cookies.ntflx_user);
-  if (!uuid || uuid == undefined) {
-    setUuid(uuidv4());
-  }
-  const newCookie = () => {
-    setCookie('ntflx_user', uuid, { maxAge: 2592000, sameSite: true });
-  };
+ 
+  const [uuid, setUuid] = React.useState("");
+ 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!uuid || uuid == undefined) {
+      navigate("/register");
+    }
+  }, [uuid]);
+
+
+  // if (!uuid || uuid == undefined) {
+  //   setUuid(uuidv4());
+  // }
+  // const newCookie = () => {
+  //   setCookie('ntflx_user', uuid, { maxAge: 2592000, sameSite: true });
+  // };
 
   return (
     <div className="h-screen flex-col justify-center overflow-scroll bg-blue-500 font-poppins text-white">
-      {cookies.ntflx_user != undefined ? <span>Hello {cookies.ntflx_user}</span> : <span>No cookie</span>}
-      <button onClick={newCookie}>press me</button>
+      {/* <button onClick={newCookie}>press me</button> */}
       {/* {console.log(cookies.ntflx_user, uuid)} */}
       {/* <div className="text-lg font-bold text-warning-400"></div> */}
       {/* <div className="flex h-screen max-h-screen max-w-md flex-col items-center justify-between">
@@ -32,6 +40,7 @@ export function App() {
         <Route path="/" element={<SwipeAmovieContainer />} />
 
         <Route path="/loved" element={<LovedMoviesContainer />} />
+        <Route path="/register" element={<RegisterUserContainer />} />
         {/* <Route path="/loved" element={<WatchTogether />} /> */}
         {/* {/* <Route path="/products" element={<Products />} /> */}
         {/* <Route path="/about" element={<About />} /> */}
