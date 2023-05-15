@@ -61,7 +61,7 @@ module.exports = {
           DEFAULT: '#c83e4d',
         },
         white: '#FAFAFA',
-        orange: { 600: '#FF741C', DEFAULT: '#FF934F' },
+        orange: { 600: '#ff8336', DEFAULT: '#FF934F' },
         info: {
           100: '#C7F9ED',
           200: '#92F3E3',

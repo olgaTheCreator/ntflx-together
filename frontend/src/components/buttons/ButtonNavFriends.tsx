@@ -1,13 +1,13 @@
 export const ButtonNavFriends = () => {
   return (
-    <button className="h-12 w-full  text-lg">
+    <button className="h-12 w-full   text-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={2.5}
+        strokeWidth={1.5}
         stroke="currentColor"
-        className="h-10 w-full text-xs"
+        className="h-8 w-full text-xs"
       >
         <path
           strokeLinecap="round"

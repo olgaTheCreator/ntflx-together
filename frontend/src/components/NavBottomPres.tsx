@@ -6,17 +6,17 @@ import { ButtonNavSwipe } from './buttons/ButtonNavSwipe';
 const navButtons = [ButtonNavLove];
 
 export const NavBottomPres = () => {
-  const activeLink = 'bg-orange';
+  const activeLink = 'opacity-100 bg-orange-600';
   return (
-    <div className="z-2 fixed bottom-0 left-0 h-12 w-full bg-info-500">
-      <div className="grid h-full w-full grid-cols-3 divide-x-2 divide-blue-500 text-blue-500">
-        <NavLink to="./" className={({ isActive }) => (isActive ? activeLink : '')}>
+    <div className="z-2 fixed bottom-0 left-0 h-12 w-full bg-orange">
+      <div className="grid h-full w-full grid-cols-3 text-blue-500">
+        <NavLink to="./" className={({ isActive }) => (isActive ? activeLink : 'h-12 opacity-60')}>
           <ButtonNavSwipe />
         </NavLink>
-        <NavLink to="./loved" className={({ isActive }) => (isActive ? activeLink : '')}>
+        <NavLink to="./loved" className={({ isActive }) => (isActive ? activeLink : 'opacity-60')}>
           <ButtonNavLove />
         </NavLink>
-        <NavLink to="./hi" className={({ isActive }) => (isActive ? activeLink : '')}>
+        <NavLink to="./hi" className={({ isActive }) => (isActive ? activeLink : 'opacity-60')}>
           <ButtonNavFriends />
         </NavLink>
       </div>
