@@ -3,8 +3,8 @@
 import asyncio
 from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
-from basemodelandexecutors import PicturesExecutor # type: ignore
 from parsejsontopandas import pictures_data_to_dataframe
+from backend.database.executors import PicturesExecutor # type: ignore
 
 async def insert_data_into_db():
     """set up connection with database and insert the data"""

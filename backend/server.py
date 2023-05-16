@@ -3,10 +3,12 @@
 
 from sanic import Sanic, response, Request
 from sanic.response import json
-from sanic_ext import Extend
+from sanic_ext import Extend, validate
 from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
-from database.basemodelandexecutors import PicturesExecutor  # type: ignore
+from models import User
+from database.executors import PicturesExecutor  #type: ignore
+
 
 
 app = Sanic("netflix-together")
@@ -47,6 +49,11 @@ async def results(request: Request, executor: PicturesExecutor):
 async def single(request: Request, executor: PicturesExecutor):
     movie = await executor.select_results()
     return json({"movie": movie[92].dict()})
+
+@app.post("/register")
+@validate(json=User)
+async def handler(request:Request, body: User):
+    return json(body.dict())
 
 
 if __name__ == "__main__":
