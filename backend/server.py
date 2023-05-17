@@ -16,17 +16,18 @@ app.config.CORS_ORIGINS = ["http://192.168.0.103", "http://0.0.0.0:8000"]
 Extend(app)
 
 # con = sqlite3.connect("movies.db")
-
+executor = PicturesExecutor()
 
 @app.before_server_start
 async def setup_mayim(app: Sanic):
-    executor = PicturesExecutor()
+
     db_path = "./database/motion_pictures.db"
     app.ctx.pool = SQLitePool(db_path)
     await app.ctx.pool.open()
     Mayim(executors=[executor], pool=app.ctx.pool)
     app.ext.dependency(executor)
-    await executor.create_table()
+    await executor.create_table_motion_pictures()
+    await executor.create_table_users()
 
 
 @app.after_server_stop
@@ -53,7 +54,12 @@ async def single(request: Request, executor: PicturesExecutor):
 @app.post("/register")
 @validate(json=User)
 async def handler(request:Request, body: User):
-    return json(body.dict())
+    user = (body.dict())
+    print(user)
+    await executor.insert_user(user["username"], str(user["uuid_public"]), str(user["uuid_private"]))
+   
+    return json({
+        'message': 'User created'})
 
 
 if __name__ == "__main__":

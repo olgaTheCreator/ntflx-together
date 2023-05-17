@@ -14,7 +14,7 @@ class MotionPicture(BaseModel):
 
 class User(BaseModel):
     """User Registration data"""
-    name: str
+    username: str
     uuid_public: UUID4
     uuid_private: UUID4
 
