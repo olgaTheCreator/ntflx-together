@@ -3,17 +3,24 @@ import { SwipeButtonGroup } from '../buttons/SwipeButtonsGroup';
 import { ButtonPlay } from '../buttons/ButtonPlay';
 
 export interface MovieCardProps {
-  imdb_id: string;
-  poster_url_780: string;
-  title: string;
-  link: string;
-  media_type: 'series' | 'movie';
-  season_count: number;
+  movie: {
+    imdb_id: string;
+    poster_url_780: string;
+    title: string;
+    link: string;
+    media_type: 'series' | 'movie';
+    season_count: number;
+  };
+  handleSwipe: (liked: 'yes' | 'no') => () => Promise<void>;
   children?: React.ReactNode;
 }
 
 export const MovieCard = (props: MovieCardProps) => {
-  const { children, poster_url_780, link, title, media_type, season_count, ...rest } = props;
+  const {
+    movie: { poster_url_780, link, title, media_type, season_count },
+    handleSwipe,
+  } = props;
+  // {poster_url_780, link, title, media_type, season_count} = movie
   const showMedia = (mediaType: string) => {
     return mediaType === 'movie' ? <span>{mediaType} </span> : <span>Seasons: {season_count}</span>;
   };
@@ -23,7 +30,7 @@ export const MovieCard = (props: MovieCardProps) => {
         <div className="relative max-h-fit ">
           <img className="rounded-md object-scale-down" src={poster_url_780} alt={title} />
           <div className="absolute top-0 h-4/5 w-full  bg-gradient-to-b from-black opacity-40 "></div>
-          <SwipeButtonGroup />
+          <SwipeButtonGroup handleSwipe={handleSwipe} />
         </div>
 
         <div className="mt-5 flex h-32 justify-start py-4 text-white">

@@ -20,12 +20,13 @@ export function App() {
   ]);
 
   const navigate = useNavigate();
+  console.log(cookies.ntflx_together_username);
 
   useEffect(() => {
     if (
-      !cookies.ntflx_together_username ||
-      !cookies.ntflx_together_uuid_private ||
-      !cookies.ntflx_together_uuid_public
+      cookies.ntflx_together_username == undefined ||
+      cookies.ntflx_together_uuid_private == undefined ||
+      cookies.ntflx_together_uuid_public == undefined
     ) {
       navigate('/register');
     }
@@ -39,6 +40,7 @@ export function App() {
 
   return (
     <UserContext.Provider value={user}>
+      {/* {console.log(user.username)} */}
       <div className="h-screen flex-col justify-center overflow-scroll bg-blue-500 font-poppins text-white">
         {/* <button onClick={newCookie}>press me</button> */}
         {/* {console.log(cookies.ntflx_together, uuid)} */}

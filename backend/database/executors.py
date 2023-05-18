@@ -1,6 +1,9 @@
 """create data models and mayim executors"""
 # from typing import List
 from mayim import SQLiteExecutor
+import sys
+sys.path.append('..')
+
 from models import MotionPicture
 
 class PicturesExecutor(SQLiteExecutor):
@@ -8,6 +11,8 @@ class PicturesExecutor(SQLiteExecutor):
         """create motion pictures table"""
     async def create_table_users(self) -> None:
         """create users table"""
+    async def create_table_swiped_movies(self) -> None:
+        """create movies swiped by users table"""
     async def insert_pictures(self,imdb_id:str, media_type: str, title: str, imdb_rating: int, link: str, 
                               poster_url_342: str, poster_url_780: str, season_count: int) -> None: #pylint: disable=W0613
         """insert all motion pictures data into table"""

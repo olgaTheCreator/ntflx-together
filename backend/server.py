@@ -1,6 +1,6 @@
 # pyright: reportUnknownMemberType=false
 """main application file"""
-
+from uuid import UUID
 from sanic import Sanic, response, Request
 from sanic.response import json
 from sanic_ext import Extend, validate
@@ -8,7 +8,7 @@ from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
 from models import User
 from database.executors import PicturesExecutor  #type: ignore
-from uuid import UUID
+
 
 
 
@@ -29,6 +29,7 @@ async def setup_mayim(app: Sanic):
     app.ext.dependency(executor)
     await executor.create_table_motion_pictures()
     await executor.create_table_users()
+    await executor.create_table_swiped_movies()
 
 
 @app.after_server_stop
@@ -57,12 +58,16 @@ async def user(request: Request, user_uuid: UUID, executor: PicturesExecutor):
     movie = await executor.select_results()
     return json({"movie": movie[92].dict(), "uuid": user_uuid})
 
+@app.post("/imdb_id")
+async def swipe(request: Request, executor: PicturesExecutor):
+    return json({
+        'message': 'swiped'})
+
 
 @app.post("/register")
 @validate(json=User)
 async def handler(request:Request, body: User):
     new_user = (body.dict())
-    print(user)
     await executor.insert_user(new_user["username"], str(new_user["uuid_public"]), str(new_user["uuid_private"]))
    
     return json({

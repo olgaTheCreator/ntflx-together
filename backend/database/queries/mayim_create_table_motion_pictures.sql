@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS motion_pictures(
-    imdb_id STR PRIMARY KEY,
+    imdb_id TEXT PRIMARY KEY,
     media_type TEXT,
     title TEXT,
     link TEXT,
