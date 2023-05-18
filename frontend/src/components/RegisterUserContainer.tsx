@@ -1,9 +1,10 @@
-import { useCookies } from 'react-cookie';
 import { v4 as uuidv4 } from 'uuid';
 import { RegisterUserPres } from './RegisterUserPres';
+import { Cookie, CookieSetOptions } from 'universal-cookie';
 import * as yup from 'yup';
-import { ErrorMessage, FormikHelpers } from 'formik';
+import { FormikHelpers } from 'formik';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const uuid_private = uuidv4();
 const uuid_public = uuidv4();
@@ -17,6 +18,14 @@ export const userSchema = yup.object().shape({
 
 export interface RegisterUser extends yup.InferType<typeof userSchema> {}
 
+interface RegisterUserProps {
+  setCookie: (
+    name: 'ntflx_together_username' | 'ntflx_together_uuid_public' | 'ntflx_together_uuid_private',
+    value: Cookie,
+    options?: CookieSetOptions,
+  ) => void;
+}
+
 const initialValues: RegisterUser = {
   username: '',
   uuid_private: uuid_private,
@@ -26,20 +35,26 @@ const initialValues: RegisterUser = {
 
 const registerUser = (values: RegisterUser) => {
   return axios.post('http://0.0.0.0:3000/register', values, { headers: { 'Content-Type': 'application/json' } });
-  // .then((res) => console.log(res));
 };
 
-export const RegisterUserContainer = () => {
-  const [cookies, setCookie] = useCookies(['ntflx_user']);
+export const RegisterUserContainer = ({ setCookie }: RegisterUserProps) => {
+  const navigate = useNavigate();
   const handleSubmit = async (values: RegisterUser, helpers: FormikHelpers<RegisterUser>) => {
     try {
       const response = await registerUser(values);
       console.log(response.data);
-    } catch (Error) {
-      console.log(ErrorMessage);
-    } finally {
+      if (response.status === 200) {
+        setCookie('ntflx_together_username', values.username, { maxAge: 2592000, sameSite: true });
+        setCookie('ntflx_together_uuid_public', values.uuid_public, { maxAge: 2592000, sameSite: true });
+        setCookie('ntflx_together_uuid_private', values.uuid_private, { maxAge: 2592000, sameSite: true });
+      }
+    } catch (error) {
+      console.log(error);
     }
     console.log(values);
+    setTimeout(() => {
+      navigate('/success');
+    }, 1000);
   };
 
   return <RegisterUserPres onSubmit={handleSubmit} initialValues={initialValues} />;

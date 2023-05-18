@@ -8,6 +8,7 @@ from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
 from models import User
 from database.executors import PicturesExecutor  #type: ignore
+from uuid import UUID
 
 
 
@@ -51,12 +52,18 @@ async def single(request: Request, executor: PicturesExecutor):
     movie = await executor.select_results()
     return json({"movie": movie[92].dict()})
 
+@app.route("/users/<user_uuid:str>")
+async def user(request: Request, user_uuid: UUID, executor: PicturesExecutor):
+    movie = await executor.select_results()
+    return json({"movie": movie[92].dict(), "uuid": user_uuid})
+
+
 @app.post("/register")
 @validate(json=User)
 async def handler(request:Request, body: User):
-    user = (body.dict())
+    new_user = (body.dict())
     print(user)
-    await executor.insert_user(user["username"], str(user["uuid_public"]), str(user["uuid_private"]))
+    await executor.insert_user(new_user["username"], str(new_user["uuid_public"]), str(new_user["uuid_private"]))
    
     return json({
         'message': 'User created'})
