@@ -6,8 +6,9 @@ from sanic.response import json
 from sanic_ext import Extend, validate
 from mayim import Mayim
 from mayim.sql.sqlite.interface import SQLitePool
-from models import User
+from models import User, Swiped
 from database.executors import PicturesExecutor  #type: ignore
+from helpers.get_random_movie import get_random_movie
 
 
 
@@ -48,20 +49,33 @@ async def results(request: Request, executor: PicturesExecutor):
     movies = await executor.select_results()
     return json({"movies": [movie.dict() for movie in movies[100:140]]})
 
-@app.route("/single")
-async def single(request: Request, executor: PicturesExecutor):
-    movie = await executor.select_results()
-    return json({"movie": movie[92].dict()})
+# @app.route("/single")
+# async def single(request: Request, executor: PicturesExecutor):
+#     movie = await executor.select_results()
+#     return json({"movie": movie[92].dict()})
 
 @app.route("/users/<user_uuid:str>")
 async def user(request: Request, user_uuid: UUID, executor: PicturesExecutor):
-    movie = await executor.select_results()
-    return json({"movie": movie[92].dict(), "uuid": user_uuid})
+    movies = await executor.select_not_swiped_movies(str(user_uuid))
+    random_movie = get_random_movie(movies)
+    return json({"movie": random_movie.dict(), "uuid": user_uuid})
 
 @app.post("/imdb_id")
-async def swipe(request: Request, executor: PicturesExecutor):
-    return json({
-        'message': 'swiped'})
+@validate(json=Swiped)
+async def swipe(request: Request, body: Swiped, executor: PicturesExecutor):
+    swiped_movie = (body.dict())
+    uuid_public = str(swiped_movie["uuid_public"])
+    imdb_id = swiped_movie["imdb_id"]
+    preference = swiped_movie["liked"]
+    liked = 0
+    
+    if preference == "yes":
+        liked = 1
+    await executor.insert_swiped_movie(uuid_public, imdb_id, liked)
+    movies = await executor.select_not_swiped_movies(str(uuid_public))
+    random_movie = get_random_movie(movies)
+    return json({"movie": random_movie.dict(), "uuid": uuid_public})
+
 
 
 @app.post("/register")

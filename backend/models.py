@@ -1,4 +1,5 @@
 """Pydantic models to validate data"""
+from typing import Literal
 from pydantic import BaseModel, UUID4
 
 class MotionPicture(BaseModel):
@@ -18,3 +19,8 @@ class User(BaseModel):
     uuid_public: UUID4
     uuid_private: UUID4
 
+class Swiped(BaseModel):
+    """Swiped movie"""
+    uuid_public: UUID4
+    imdb_id: str
+    liked: Literal['yes', 'no']
