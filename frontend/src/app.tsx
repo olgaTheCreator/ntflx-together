@@ -4,10 +4,12 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { SwipeAmovieContainer } from './components/SwipeAmovieContainer';
 import { LovedMoviesContainer } from './components/LovedMoviesContainer';
+import { SwipeAmovieWithUrlContainer } from './components/SwipeAmovieWithUrlContainer';
 import { NavBottomContainer } from './components/NavBottomContainer';
 import { RegisterUserContainer } from './components/RegisterUserContainer';
 import { RegisterUserSuccess } from './components/RegisterUserSuccess';
 import { UserContext } from './context/Context';
+import { parseCommandLine } from 'typescript';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
 // new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -49,6 +51,7 @@ export function App() {
         <div className="flex h-7/8 justify-center"> */}
         <Routes>
           <Route path="/" element={<SwipeAmovieContainer />} />
+          <Route path="/movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
 
           <Route path="/loved" element={<LovedMoviesContainer />} />
           <Route path="/register" element={<RegisterUserContainer setCookie={setCookie} />} />

@@ -1,6 +1,10 @@
-export const ButtonShare = () => {
+interface ButtonShareProps {
+  handleShare: () => void;
+}
+
+export const ButtonShare = ({ handleShare }: ButtonShareProps) => {
   return (
-    <button type="submit" className=" h-11  w-11  text-lg ">
+    <button type="button" onClick={handleShare} className=" h-11  w-11  text-lg ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

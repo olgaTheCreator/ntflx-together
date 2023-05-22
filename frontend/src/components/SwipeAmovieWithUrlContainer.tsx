@@ -4,8 +4,13 @@ import { SwipeAmoviePres } from './SwipeAmoviePres';
 import { useUserContext } from '../context/Context';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const fetchMotionPicture = (url: string) => axios.get(`http://0.0.0.0:3000/users/${url}`);
+// interface SwipeAMovieContainerProps {
+//   imdb_id: string | undefined;
+// }
+
+const fetchMotionPicture = (imdb_id: string | undefined) => axios.get(`http://0.0.0.0:3000/movie/${imdb_id}`);
 // .then((res) => res.data);
 
 const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') => {
@@ -16,12 +21,14 @@ const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') =
   );
 };
 
-export const SwipeAmovieContainer = () => {
+export const SwipeAmovieWithUrlContainer = () => {
   const { uuid_public } = useUserContext();
   const [movie, setMovie] = useState<MovieCardProps['movie'] | null>(null);
+  const navigate = useNavigate();
+  const params = useParams();
   // const { data, error, isLoading } = useSWR(uuid_public != undefined ? uuid_public : 'single', fetchMotionPicture);
   useEffect(() => {
-    fetchMotionPicture(uuid_public)
+    fetchMotionPicture(params.imdb_id)
       .then((response) => {
         setMovie(response.data.movie);
       })
@@ -32,8 +39,7 @@ export const SwipeAmovieContainer = () => {
     try {
       if (movie) {
         const response = await swipeMovie(uuid_public, movie.imdb_id, liked);
-        if (response.data.movie) setMovie(response.data.movie);
-        console.log(response);
+        navigate('/');
       }
     } catch (error) {
       console.log(error);

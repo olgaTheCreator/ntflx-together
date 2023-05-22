@@ -44,10 +44,15 @@ async def index(request: str):  # pylint: disable=unused-argument
     return response.json({"llo": "world!"})
 
 
-@app.route("/loved")
-async def results(request: Request, executor: PicturesExecutor):
-    movies = await executor.select_results()
-    return json({"movies": [movie.dict() for movie in movies[100:140]]})
+@app.route("/loved/<user_uuid:str>")
+async def results(request: Request,user_uuid: UUID, executor: PicturesExecutor):
+    movies = await executor.select_loved_movies(str(user_uuid))
+    return json({"movies": [movie.dict() for movie in movies]})
+
+@app.route("/movie/<imdb_id:strorempty>")
+async def by_imdb(request: Request,imdb_id: str, executor: PicturesExecutor):
+    movie = await executor.select_movie_by_imdb_id(imdb_id)
+    return json({"movie": movie.dict()})
 
 # @app.route("/single")
 # async def single(request: Request, executor: PicturesExecutor):

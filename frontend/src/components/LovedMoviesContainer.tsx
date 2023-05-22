@@ -1,15 +1,55 @@
+import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { LovedMoviesPres } from './LovedMoviesPres';
+import { useUserContext } from '../context/Context';
+import { MovieCardProps } from './cards/MovieCard';
+import { ButtonLoadMore } from './buttons/ButtonLoadMore';
 
-const fetchMotionPicture = (url: string) => axios.get(`http://0.0.0.0:3000/${url}`).then((res) => res.data);
+const fetchMotionPicture = (url: string) =>
+  axios.get(`http://0.0.0.0:3000/loved/${url}`).then((res) => {
+    console.log('data sent');
+    return res.data;
+  });
 
 export const LovedMoviesContainer = () => {
-  const { data, error, isLoading } = useSWR('loved', fetchMotionPicture);
+  const [movies, setMovies] = useState<MovieCardProps['movie'][]>([]);
+  const [loadMoreIndex, setLoadMoreIndex] = useState(10);
+
+  const { uuid_public } = useUserContext();
+  const { data, error, isLoading } = useSWR(uuid_public, fetchMotionPicture);
+  const handleLoadMore = () => {
+    setLoadMoreIndex((loadMoreIndex) => loadMoreIndex + 10);
+  };
+  useEffect(
+    () =>
+      data
+        ? setMovies(data.movies)
+        : // setLoadMore({ length: movies.length, hasMore: movies.length > 10 ? true : false, currentIndex: 0 }))
+          undefined,
+    [data],
+  );
+  // useEffect(
+  //   () =>
+  //     data
+  //       ? setLoadMore({ length: movies.length, hasMore: movies.length > loadMore.currentIndex ? true : false, currentIndex: 10 })
+  //       : undefined,
+  //   [movies],
+  // );
+  console.log(movies);
+  // movies {
+  //   length
+  //   hasmore?
+  // }
   if (error) {
     return error;
   }
-  if (isLoading) return <>Is Loading</>;
+  if (isLoading || !data.movies || movies == undefined) return <>Is Loading</>;
 
-  return <LovedMoviesPres movies={data.movies} />;
+  return (
+    <div className="flex flex-col justify-start justify-items-center">
+      <LovedMoviesPres movies={movies.slice(0, loadMoreIndex)} />
+      {loadMoreIndex < movies.length && <ButtonLoadMore handleLoadMore={handleLoadMore} />}
+    </div>
+  );
 };

@@ -2,10 +2,10 @@ import { ButtonNavLove } from './buttons/ButtonNavLove';
 import { ButtonNavFriends } from './buttons/ButtonNavFriends';
 import { NavLink } from 'react-router-dom';
 import { ButtonNavSwipe } from './buttons/ButtonNavSwipe';
-const navButtons = [ButtonNavLove];
+// const navButtons = [ButtonNavLove];
 
 export const NavBottomPres = () => {
-  const activeLink = 'opacity-100 bg-orange-600';
+  const activeLink = 'opacity-100 bg-orange';
   return (
     <div className="z-2 fixed bottom-0 left-0 h-12 w-full bg-orange">
       <div className="grid h-full w-full grid-cols-3 text-blue-500">
