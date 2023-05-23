@@ -4,7 +4,7 @@ export const RegisterUserSuccess = () => {
   const navigate = useNavigate();
   setTimeout(() => {
     navigate('/');
-  }, 3000);
+  }, 1500);
 
   return (
     <div className="mx-auto mt-5 w-full max-w-xs rounded bg-orange">

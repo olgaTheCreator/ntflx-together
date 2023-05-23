@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { FormikHelpers } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { http_url } from '../context/Url';
 
 const uuid_private = uuidv4();
 const uuid_public = uuidv4();
@@ -34,7 +35,7 @@ const initialValues: RegisterUser = {
 };
 
 const registerUser = (values: RegisterUser) => {
-  return axios.post('http://0.0.0.0:3000/register', values, { headers: { 'Content-Type': 'application/json' } });
+  return axios.post(`${http_url}/register`, values, { headers: { 'Content-Type': 'application/json' } });
 };
 
 export const RegisterUserContainer = ({ setCookie }: RegisterUserProps) => {
@@ -54,7 +55,7 @@ export const RegisterUserContainer = ({ setCookie }: RegisterUserProps) => {
     console.log(values);
     setTimeout(() => {
       navigate('/success');
-    }, 1000);
+    }, 800);
   };
 
   return <RegisterUserPres onSubmit={handleSubmit} initialValues={initialValues} />;

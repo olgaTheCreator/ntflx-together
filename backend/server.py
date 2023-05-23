@@ -14,7 +14,7 @@ from helpers.get_random_movie import get_random_movie
 
 
 app = Sanic("netflix-together")
-app.config.CORS_ORIGINS = ["http://192.168.0.103", "http://0.0.0.0:8000"]
+app.config.CORS_ORIGINS = ["http://192.168.0.103", "http://192.168.0.103:80", "http://0.0.0.0:8000"]
 Extend(app)
 
 # con = sqlite3.connect("movies.db")

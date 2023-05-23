@@ -5,17 +5,18 @@ import { useUserContext } from '../context/Context';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
 import { useParams, useNavigate } from 'react-router-dom';
+import { http_url } from '../context/Url';
 
 // interface SwipeAMovieContainerProps {
 //   imdb_id: string | undefined;
 // }
 
-const fetchMotionPicture = (imdb_id: string | undefined) => axios.get(`http://0.0.0.0:3000/movie/${imdb_id}`);
+const fetchMotionPicture = (imdb_id: string | undefined) => axios.get(`${http_url}/movie/${imdb_id}`);
 // .then((res) => res.data);
 
 const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') => {
   return axios.post(
-    `http://0.0.0.0:3000/imdb_id`,
+    `${http_url}/imdb_id`,
     { uuid_public: uuid_public, imdb_id: imdb_id, liked: liked },
     { headers: { 'Content-Type': 'application/json' } },
   );

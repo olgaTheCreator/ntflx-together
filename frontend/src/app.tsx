@@ -9,7 +9,8 @@ import { NavBottomContainer } from './components/NavBottomContainer';
 import { RegisterUserContainer } from './components/RegisterUserContainer';
 import { RegisterUserSuccess } from './components/RegisterUserSuccess';
 import { UserContext } from './context/Context';
-import { parseCommandLine } from 'typescript';
+import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
+import { WatchTogetherContainer } from './components/WatchTogetherContainer';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
 // new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -43,7 +44,7 @@ export function App() {
   return (
     <UserContext.Provider value={user}>
       {/* {console.log(user.username)} */}
-      <div className="h-screen flex-col justify-center overflow-scroll bg-blue-500 font-poppins text-white">
+      <div className="h-screen max-w-full flex-col justify-center overflow-scroll bg-blue-500 font-poppins text-white">
         {/* <button onClick={newCookie}>press me</button> */}
         {/* {console.log(cookies.ntflx_together, uuid)} */}
         {/* <div className="text-lg font-bold text-warning-400"></div> */}
@@ -56,6 +57,16 @@ export function App() {
           <Route path="/loved" element={<LovedMoviesContainer />} />
           <Route path="/register" element={<RegisterUserContainer setCookie={setCookie} />} />
           <Route path="/success" element={<RegisterUserSuccess />} />
+          <Route path="/qr" element={<GenerateAndScanQrContainer />} />
+          <Route path="/watch-together" element={<WatchTogetherContainer />}>
+            {/* <Route
+          path="qr"
+          element={<DashboardMessages />}
+        />
+        <Route path="friends" element={<DashboardTasks />} />
+        <Route path="movies" element={<DashboardTasks />} /> */}
+          </Route>
+
           {/* <Route path="/loved" element={<WatchTogether />} /> */}
           {/* {/* <Route path="/products" element={<Products />} /> */}
           {/* <Route path="/about" element={<About />} /> */}

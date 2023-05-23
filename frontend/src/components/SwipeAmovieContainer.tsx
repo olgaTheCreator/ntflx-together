@@ -4,13 +4,14 @@ import { SwipeAmoviePres } from './SwipeAmoviePres';
 import { useUserContext } from '../context/Context';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
+import { http_url } from '../context/Url';
 
-const fetchMotionPicture = (url: string) => axios.get(`http://0.0.0.0:3000/users/${url}`);
+const fetchMotionPicture = (url: string) => axios.get(`${http_url}/users/${url}`);
 // .then((res) => res.data);
 
 const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') => {
   return axios.post(
-    `http://0.0.0.0:3000/imdb_id`,
+    `${http_url}/imdb_id`,
     { uuid_public: uuid_public, imdb_id: imdb_id, liked: liked },
     { headers: { 'Content-Type': 'application/json' } },
   );
