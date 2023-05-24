@@ -35,5 +35,8 @@ class PicturesExecutor(SQLiteExecutor):
     async def select_movie_by_imdb_id(self, imdb_id: str) -> MotionPicture: #type: ignore
         """select single movie by imdb_id"""
 
+    async def select_watch_together(self, uuid_public: str, friend_uuid: str) -> list[MotionPicture]: #type: ignore
+        """select movies loved by user and friend"""
+
 
     

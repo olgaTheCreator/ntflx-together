@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { AddFriendFirstCard } from './cards/AddFriendFirstCard';
 
 const fetchMotionPicture = (uuid_public: string, uuid_friend: string | undefined) =>
-  axios.get(`${http_url}/lwatch-together/${uuid_public}/${uuid_friend}`);
+  axios.get(`${http_url}/watch-together/${uuid_public}/${uuid_friend}`);
 
 let uuid_friend = 'a3ac8636-657c-4088-8653-2e3fd9d4a34f';
 
