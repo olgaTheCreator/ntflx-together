@@ -59,6 +59,7 @@ export function App() {
           <Route path="/success" element={<RegisterUserSuccess />} />
           <Route path="/qr" element={<GenerateAndScanQrContainer />} />
           <Route path="/watch-together" element={<WatchTogetherContainer />}>
+            <Route path ="/:uuid_friend" />
             {/* <Route
           path="qr"
           element={<DashboardMessages />}
