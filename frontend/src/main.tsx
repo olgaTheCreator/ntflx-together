@@ -5,7 +5,7 @@ import { CookiesProvider } from 'react-cookie';
 import { App } from './app';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
-new EventSource('/esbuild').addEventListener('change', () => location.reload());
+new EventSource('http://0.0.0.0:8000/esbuild').addEventListener('change', () => location.reload());
 
 const container = document.getElementById('root');
 

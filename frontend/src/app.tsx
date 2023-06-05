@@ -13,8 +13,8 @@ import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContai
 import { WatchTogetherContainer } from './components/WatchTogetherContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
 
-// eslint-disable-next-line no-undef, no-restricted-globals
-// new EventSource('/esbuild').addEventListener('change', () => location.reload());
+//eslint-disable-next-line no-undef, no-restricted-globals
+//new EventSource('/esbuild').addEventListener('change', () => location.reload());
 
 export function App() {
   const [cookies, setCookie] = useCookies([
@@ -45,7 +45,7 @@ export function App() {
   return (
     <UserContext.Provider value={user}>
       {/* {console.log(user.username)} */}
-      <div className="h-screen max-w-full flex-col justify-center overflow-scroll bg-blue-500 font-poppins text-white">
+      <div className="flex h-screen max-w-full flex-col justify-start overflow-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
         {/* <button onClick={newCookie}>press me</button> */}
         {/* {console.log(cookies.ntflx_together, uuid)} */}
         {/* <div className="text-lg font-bold text-warning-400"></div> */}

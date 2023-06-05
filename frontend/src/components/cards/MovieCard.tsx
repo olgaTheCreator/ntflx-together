@@ -35,13 +35,13 @@ export const MovieCard = (props: MovieCardProps) => {
   // });
   return (
     <>
-      <div className="relative m-5 flex h-5/6 flex-col">
+      <div className="relative m-5 flex h-9/10 flex-col">
         <div
           // {...handlers} style={{ touchAction: 'pan-x' }}
-          className="relative max-h-fit "
+          className="relative h-4/5 md:h-7/8"
         >
-          <img className="rounded-md object-scale-down" src={poster_url_780} alt={title} />
-          <div className="absolute top-0 h-4/5 w-full  bg-gradient-to-b from-black opacity-40 "></div>
+          <img className="max-h-full rounded-md md:object-cover lg:object-cover" src={poster_url_780} alt={title} />
+          <div className="absolute top-0 h-1/3 w-full  bg-gradient-to-b from-black opacity-50 "></div>
           <SwipeButtonGroup handleSwipe={handleSwipe} />
         </div>
 
@@ -49,7 +49,7 @@ export const MovieCard = (props: MovieCardProps) => {
           <img className="mr-5 max-h-20 basis-3/4 object-scale-down" src={img} alt="Netflix logo" />
           <div className="h-full basis-1/2 pl-1">
             <h1 className="text-3xl font-semibold">{title_h1}</h1>
-            <h2 className="mt-2 text-2xl font-semibold">{title_h2}</h2>
+            <p className="mt-2 line-clamp-2 text-2xl font-semibold">{title_h2}</p>
           </div>
         </div>
         <div className="flex items-center justify-end divide-x-2 divide-white pb-4 text-white">

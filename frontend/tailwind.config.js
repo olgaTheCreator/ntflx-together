@@ -12,6 +12,8 @@ module.exports = {
         poppins: ['Poppins'],
       },
       height: {
+        'screen-small': '100svh',
+        'screen-large': '100lvh',
         '1/8': '12.5%',
         '7/8': '87.5%',
         '1/10': '10%',
