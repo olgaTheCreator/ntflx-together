@@ -12,6 +12,7 @@ import { UserContext } from './context/Context';
 import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
 import { WatchTogetherContainer } from './components/WatchTogetherContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
+import { AddFriend } from './components/AddFriend';
 
 //eslint-disable-next-line no-undef, no-restricted-globals
 //new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -59,7 +60,9 @@ export function App() {
           <Route path="/register" element={<RegisterUserContainer setCookie={setCookie} />} />
           <Route path="/success" element={<RegisterUserSuccess />} />
           <Route path="/qr" element={<GenerateAndScanQrContainer />} />
+          <Route path="/watch-together/add-friend/:uuid_friend" element={<AddFriend />} />
           <Route path="/watch-together" element={<WatchTogetherLovedContainer />}>
+            <Route path="add-friend/:uuid_friend" element={<AddFriend />} />
             <Route path=":uuid_friend" />
             {/* <Route
           path="qr"

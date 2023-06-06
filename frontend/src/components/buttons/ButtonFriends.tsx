@@ -14,7 +14,7 @@ export const ButtonFriends = (props: ButtonFriendsProps) => {
 
   return (
     <button
-      className="focus:shadow-outline mx-auto inline-flex w-full items-center justify-between rounded border-2 border-info-500 bg-info-500 px-4 py-3 text-center  text-xl font-bold text-white  shadow transition-colors duration-200 hover:bg-info-300 hover:text-blue-500 focus:outline-none active:bg-orange"
+      className="focus:shadow-outline mx-auto inline-flex w-full items-center justify-between rounded-t bg-info-500 px-4 py-3 text-center  text-2xl font-bold text-white  shadow transition-colors duration-200 hover:bg-info-300 hover:text-blue-500 focus:outline-none active:bg-orange"
       onClick={() => handleSetIndex(index)}
     >
       {title}

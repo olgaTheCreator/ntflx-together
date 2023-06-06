@@ -15,7 +15,7 @@ const fetchMotionPicture = (uuid_public: string, uuid_friend: string | undefined
 let uuid_friend = 'a3ac8636-657c-4088-8653-2e3fd9d4a34f';
 
 export const WatchTogetherLovedContainer = () => {
-  const [movies, setMovies] = useState<MovieCardProps['movie'][]>([]);
+  const [movies, setMovies] = useState<Array<MovieCardProps['movie']> | null>(null);
   const [loadMoreIndex, setLoadMoreIndex] = useState(10);
   const { uuid_public } = useUserContext();
   const params = useParams();
@@ -33,6 +33,8 @@ export const WatchTogetherLovedContainer = () => {
   };
 
   console.log(movies);
+
+  if (movies === null) return <></>;
 
   if (movies.length > 0) {
     return (

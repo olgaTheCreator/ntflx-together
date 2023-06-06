@@ -14,8 +14,11 @@ const fetchMotionPicture = (url: string) => axios.get(`${http_url}/loved/${url}`
 //   // return res.data;
 // });
 
+type Movies = Array<MovieCardProps['movie']>;
+type Maybe<T> = T | null;
+
 export const LovedMoviesContainer = () => {
-  const [movies, setMovies] = useState<MovieCardProps['movie'][]>([]);
+  const [movies, setMovies] = useState<Maybe<Movies>>(null);
   const [loadMoreIndex, setLoadMoreIndex] = useState(10);
 
   const { uuid_public } = useUserContext();
@@ -30,6 +33,8 @@ export const LovedMoviesContainer = () => {
   const handleLoadMore = () => {
     setLoadMoreIndex((loadMoreIndex) => loadMoreIndex + 10);
   };
+
+  if (movies === null) return <></>;
 
   if (movies.length > 0) {
     return (
