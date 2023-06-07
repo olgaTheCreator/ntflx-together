@@ -21,7 +21,6 @@ export const MovieCard = (props: MovieCardProps) => {
     movie: { poster_url_780, link, title, media_type, season_count },
     handleSwipe,
   } = props;
-  // {poster_url_780, link, title, media_type, season_count} = movie
   const showMedia = (mediaType: string) => {
     return mediaType === 'movie' ? <span>{mediaType} </span> : <span>Seasons: {season_count}</span>;
   };

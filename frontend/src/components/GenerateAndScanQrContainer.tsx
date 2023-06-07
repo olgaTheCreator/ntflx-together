@@ -4,6 +4,7 @@ import { AccordionQr } from './AccordionQr';
 import { http_url } from '../context/Url';
 import { useUserContext } from '../context/Context';
 import { QrScaner } from './QrScaner';
+import { Outlet } from 'react-router-dom';
 
 export const GenerateAndScanQrContainer = () => {
   const [activeIndex, setActiveIndex] = useState(3);
@@ -27,7 +28,9 @@ export const GenerateAndScanQrContainer = () => {
         <QrScaner />
       </AccordionQr>
       <AccordionQr title="Friends" index={3} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
-        <div className="h-32 w-32 rounded-xl p-4 shadow-lg shadow-blue-700">Something</div>
+        <div className="h-32 w-32 rounded-xl p-4 shadow-lg shadow-blue-700">
+          <Outlet />
+        </div>
       </AccordionQr>
     </div>
   );

@@ -2,7 +2,7 @@
 import sys
 from mayim import SQLiteExecutor
 sys.path.append('..')
-from models import MotionPicture #pylint: disable=E0401, C0413
+from models import MotionPicture, User #pylint: disable=E0401, C0413
 class PicturesExecutor(SQLiteExecutor):
     async def create_table_motion_pictures(self) -> None:
         """create motion pictures table"""
@@ -37,6 +37,9 @@ class PicturesExecutor(SQLiteExecutor):
 
     async def select_watch_together(self, uuid_public: str, friend_uuid: str) -> list[MotionPicture]: #type: ignore
         """select movies loved by user and friend"""
+    
+    async def select_user(self, uuid_public: str) -> User: #type: ignore
+        """select user by uuid_public"""
 
 
     

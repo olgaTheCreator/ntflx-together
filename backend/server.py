@@ -59,6 +59,11 @@ async def by_imdb(request: Request,imdb_id: str, executor: PicturesExecutor):
     movie = await executor.select_movie_by_imdb_id(imdb_id)
     return json({"movie": movie.dict()})
 
+@app.route("/user/<user_uuid:str>")
+async def friend_data(request: Request, user_uuid: UUID, executor: PicturesExecutor):
+    user_data = await executor.select_user(str(user_uuid))
+    return json({"username": user_data.username,"public_uuid": str(user_data.uuid_public)})
+
 # @app.route("/single")
 # async def single(request: Request, executor: PicturesExecutor):
 #     movie = await executor.select_results()
