@@ -3,6 +3,7 @@ import QRCode from 'react-qr-code';
 import { AccordionQr } from './AccordionQr';
 import { http_url } from '../context/Url';
 import { useUserContext } from '../context/Context';
+import { QrScaner } from './QrScaner';
 
 export const GenerateAndScanQrContainer = () => {
   const [activeIndex, setActiveIndex] = useState(3);
@@ -23,10 +24,10 @@ export const GenerateAndScanQrContainer = () => {
         </div>
       </AccordionQr>
       <AccordionQr title="Scan a Friend" index={2} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
-        Scaner
+        <QrScaner />
       </AccordionQr>
       <AccordionQr title="Friends" index={3} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
-        List of friends
+        <div className="h-32 w-32 rounded-xl p-4 shadow-lg shadow-blue-700">Something</div>
       </AccordionQr>
     </div>
   );

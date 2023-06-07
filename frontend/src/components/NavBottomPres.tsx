@@ -6,20 +6,20 @@ import { ButtonNavQr } from './buttons/ButtonNavQr';
 // const navButtons = [ButtonNavLove];
 
 export const NavBottomPres = () => {
-  const activeLink = 'opacity-100 bg-orange w-full';
+  const activeLink = 'opacity-100 bg-orange-600 w-full rounded-t-md h-14 ring-2 ring-orange-300 ring-inset';
   return (
-    <div className="z-2 fixed bottom-0 grid h-12 w-full grid-cols-1 place-items-center md:h-14">
-      <div className="grid h-full w-full grid-cols-4  place-items-center bg-orange bg-opacity-90 text-blue-500 lg:max-w-xl ">
-        <NavLink to="./" className={({ isActive }) => (isActive ? activeLink : 'h-12 opacity-70')}>
+    <div className="z-2 fixed bottom-0 grid h-14 w-full grid-cols-1 place-items-center md:h-14">
+      <div className="grid h-full w-full grid-cols-4  place-items-end text-blue-500 lg:max-w-xl ">
+        <NavLink to="./" className={({ isActive }) => (isActive ? activeLink : 'h-12 w-full bg-orange')}>
           <ButtonNavSwipe />
         </NavLink>
-        <NavLink to="./loved" className={({ isActive }) => (isActive ? activeLink : 'opacity-70')}>
+        <NavLink to="./loved" className={({ isActive }) => (isActive ? activeLink : 'h-12 w-full  bg-orange')}>
           <ButtonNavLove />
         </NavLink>
-        <NavLink to="./qr" className={({ isActive }) => (isActive ? activeLink : 'opacity-70')}>
+        <NavLink to="./qr" className={({ isActive }) => (isActive ? activeLink : 'h-12 w-full  bg-orange')}>
           <ButtonNavQr />
         </NavLink>
-        <NavLink to="./watch-together" className={({ isActive }) => (isActive ? activeLink : 'opacity-70')}>
+        <NavLink to="./watch-together" className={({ isActive }) => (isActive ? activeLink : 'h-12 w-full  bg-orange')}>
           <ButtonNavFriends />
         </NavLink>
       </div>
