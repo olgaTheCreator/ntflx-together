@@ -29,17 +29,14 @@ export const MovieCard = (props: MovieCardProps) => {
   const title_h1 = titleArray.slice(0, 2).join(' ');
   const title_h2 = titleArray.slice(2).join(' ');
 
-  // const handlers = useSwipeable({
-  //   onSwipedRight: () => handleSwipe('yes'),
-  //   onSwipedLeft: () => handleSwipe('no'),
-  // });
+  const handlers = useSwipeable({
+    onSwipedRight: handleSwipe('yes'),
+    onSwipedLeft: handleSwipe('no'),
+  });
   return (
     <>
       <div className="relative m-5 flex h-9/10 flex-col">
-        <div
-          // {...handlers} style={{ touchAction: 'pan-x' }}
-          className="relative h-4/5 md:h-7/8"
-        >
+        <div {...handlers} style={{ touchAction: 'pan-x' }} className="relative h-4/5 md:h-7/8">
           <img className="max-h-full rounded-md md:object-cover lg:object-cover" src={poster_url_780} alt={title} />
           <div className="absolute top-0 h-1/3 w-full  bg-gradient-to-b from-black opacity-50 "></div>
           <SwipeButtonGroup handleSwipe={handleSwipe} />
