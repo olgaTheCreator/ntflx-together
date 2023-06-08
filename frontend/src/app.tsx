@@ -12,7 +12,8 @@ import { UserContext } from './context/Context';
 import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
 import { WatchTogetherContainer } from './components/WatchTogetherContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
-import { AddFriend } from './components/AddFriend';
+import { AddFriendContainer } from './components/AddFriendContainer';
+import { AddFriendFirstCard } from './components/cards/AddFriendFirstCard';
 
 //eslint-disable-next-line no-undef, no-restricted-globals
 //new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -45,41 +46,23 @@ export function App() {
 
   return (
     <UserContext.Provider value={user}>
-      {/* {console.log(user.username)} */}
       <div className="flex h-screen max-w-full flex-col justify-start overflow-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
-        {/* <button onClick={newCookie}>press me</button> */}
-        {/* {console.log(cookies.ntflx_together, uuid)} */}
-        {/* <div className="text-lg font-bold text-warning-400"></div> */}
-        {/* <div className="flex h-screen max-h-screen max-w-md flex-col items-center justify-between">
-        <div className="flex h-7/8 justify-center"> */}
         <Routes>
           <Route path="/" element={<SwipeAmovieContainer />} />
-          <Route path="/movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
-
-          <Route path="/loved" element={<LovedMoviesContainer />} />
-          <Route path="/register" element={<RegisterUserContainer setCookie={setCookie} />} />
-          <Route path="/success" element={<RegisterUserSuccess />} />
-          <Route path="/qr" element={<GenerateAndScanQrContainer />} />
-          <Route path="/watch-together/add-friend/:uuid_friend" element={<AddFriend />} />
-          <Route path="/watch-together" element={<WatchTogetherLovedContainer />}>
-            <Route path="add-friend/:uuid_friend" element={<AddFriend />} />
-            <Route path=":uuid_friend" />
-            {/* <Route
-          path="qr"
-          element={<DashboardMessages />}
-        />
-        <Route path="friends" element={<DashboardTasks />} />
-        <Route path="movies" element={<DashboardTasks />} /> */}
+          <Route path="movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
+          <Route path="loved" element={<LovedMoviesContainer />} />
+          <Route path="register" element={<RegisterUserContainer setCookie={setCookie} />} />
+          <Route path="success" element={<RegisterUserSuccess />} />
+          <Route path="qr" element={<GenerateAndScanQrContainer />}>
+            <Route path=":uuid_friend" element={<AddFriendContainer />} />
           </Route>
-
-          {/* <Route path="/loved" element={<WatchTogether />} /> */}
-          {/* {/* <Route path="/products" element={<Products />} /> */}
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="watch-together">
+            {/* <Route index element={<AddFriendFirstCard />} /> */}
+            <Route path=":uuid_friend" element={<WatchTogetherLovedContainer />} />
+          </Route>
         </Routes>
-        {/* </div> */}
-        {/* <div className="z-2 fixed bottom-0 left-0 h-14 w-full bg-orange"> */}
+
         <NavBottomContainer />
-        {/* </div> */}
       </div>
     </UserContext.Provider>
   );

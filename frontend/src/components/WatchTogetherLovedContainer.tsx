@@ -12,7 +12,7 @@ import { AddFriendFirstCard } from './cards/AddFriendFirstCard';
 const fetchMotionPicture = (uuid_public: string, uuid_friend: string | undefined) =>
   axios.get(`${http_url}/watch-together/${uuid_public}/${uuid_friend}`);
 
-let uuid_friend = 'a3ac8636-657c-4088-8653-2e3fd9d4a34f';
+// let uuid_friend = 'a3ac8636-657c-4088-8653-2e3fd9d4a34f';
 
 export const WatchTogetherLovedContainer = () => {
   const [movies, setMovies] = useState<Array<MovieCardProps['movie']> | null>(null);
@@ -20,8 +20,8 @@ export const WatchTogetherLovedContainer = () => {
   const { uuid_public } = useUserContext();
   const params = useParams();
   useEffect(() => {
-    // fetchMotionPicture(uuid_public, params.uuid_friend)
-    fetchMotionPicture(uuid_public, uuid_friend)
+    fetchMotionPicture(uuid_public, params.uuid_friend)
+      // fetchMotionPicture(uuid_public, uuid_friend)
       .then((response) => {
         setMovies(response.data.movies);
       })
