@@ -25,7 +25,6 @@ export const AddFriendContainer = () => {
   useEffect(() => {
     fetchFriendName(params.uuid_friend)
       .then((response) => {
-        // console.log(response.data, response.data.username);
         setFriend({ username: response.data.username, uuid: response.data.public_uuid });
       })
       .catch((e) => console.log(e));

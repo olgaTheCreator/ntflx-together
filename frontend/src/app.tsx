@@ -17,8 +17,22 @@ import { AddFriendFirstCard } from './components/cards/AddFriendFirstCard';
 
 //eslint-disable-next-line no-undef, no-restricted-globals
 //new EventSource('/esbuild').addEventListener('change', () => location.reload());
+export interface Friend {
+  username: string;
+  uuid: string;
+}
 
 export function App() {
+  const [friends, setFriends] = React.useState<Array<Friend>>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('friends');
+    if (saved) {
+      const initial = JSON.parse(saved);
+      setFriends(initial);
+    }
+  }, []);
+
   const [cookies, setCookie] = useCookies([
     'ntflx_together_username',
     'ntflx_together_uuid_public',
@@ -26,7 +40,6 @@ export function App() {
   ]);
 
   const navigate = useNavigate();
-  console.log(cookies.ntflx_together_username);
 
   useEffect(() => {
     if (
@@ -53,12 +66,15 @@ export function App() {
           <Route path="loved" element={<LovedMoviesContainer />} />
           <Route path="register" element={<RegisterUserContainer setCookie={setCookie} />} />
           <Route path="success" element={<RegisterUserSuccess />} />
-          <Route path="qr" element={<GenerateAndScanQrContainer />}>
+          <Route path="qr" element={<GenerateAndScanQrContainer friends={friends} setFriends={setFriends} />}>
             <Route path=":uuid_friend" element={<AddFriendContainer />} />
           </Route>
           <Route path="watch-together">
-            {/* <Route index element={<AddFriendFirstCard />} /> */}
-            <Route path=":uuid_friend" element={<WatchTogetherLovedContainer />} />
+            <Route index element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />} />
+            <Route
+              path=":uuid_friend"
+              element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />}
+            />
           </Route>
         </Routes>
 

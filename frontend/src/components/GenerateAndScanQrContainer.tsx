@@ -4,8 +4,10 @@ import { AccordionQr } from './AccordionQr';
 import { useUserContext } from '../context/Context';
 import { QrScaner } from './QrScaner';
 import { FriendsContainer } from './FriendsContainer';
+import { FriendsState } from './FriendsContainer';
 
-export const GenerateAndScanQrContainer = () => {
+export const GenerateAndScanQrContainer = (props: FriendsState) => {
+  const { friends, setFriends } = props;
   const [activeIndex, setActiveIndex] = useState(3);
   const handleSetIndex = (index: number) => setActiveIndex(index === activeIndex ? 3 : index);
   const { uuid_public, username } = useUserContext();
@@ -28,7 +30,7 @@ export const GenerateAndScanQrContainer = () => {
       </AccordionQr>
       <AccordionQr title="Friends" index={3} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
         <div className="">
-          <FriendsContainer />
+          <FriendsContainer friends={friends} setFriends={setFriends} />
         </div>
       </AccordionQr>
     </div>

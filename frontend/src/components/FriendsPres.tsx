@@ -9,14 +9,18 @@ import { Friend } from './FriendsContainer';
 export const FriendsPres = ({
   friend,
   handleRemoveFriend,
+  handleLastFriend,
 }: {
   friend: Friend;
   handleRemoveFriend: (friend: Friend) => void;
+  handleLastFriend: (friend: Friend) => void;
 }) => {
   return (
-    <div className="mx-auto grid w-full max-w-xs grid-cols-2 gap-4 rounded border-2 border-blue-500 bg-orange p-5 text-xl text-blue-500">
+    <div className="mx-auto mb-4 grid w-full max-w-xs grid-cols-2 gap-4 rounded border-2 border-blue-500 bg-orange p-3 text-xl text-blue-500">
       <Link to={`../watch-together/${friend.uuid}`}>
-        <button className="h-full w-full font-bold">{friend.username}</button>
+        <button onClick={() => handleLastFriend(friend)} className="h-full w-full font-bold">
+          {friend.username}
+        </button>
       </Link>
       <button
         onClick={() => handleRemoveFriend(friend)}
