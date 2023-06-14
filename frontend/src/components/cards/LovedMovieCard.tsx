@@ -3,6 +3,7 @@ import img from '../../assets/Netflix_Symbol.png';
 import { ButtonPlay } from '../buttons/ButtonPlay';
 import { ButtonShare } from '../buttons/ButtonShare';
 import { useNavigate } from 'react-router-dom';
+import { http_url_front } from '../../context/Url_front';
 
 export interface MovieCardProps {
   imdb_id: string;
@@ -30,7 +31,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
   };
   const shareData = {
     text: title,
-    url: `http://192.168.0.103/movie/${imdb_id}`,
+    url: `${http_url_front}/movie/${imdb_id}`,
   };
 
   return (

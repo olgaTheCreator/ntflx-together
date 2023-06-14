@@ -5,7 +5,7 @@ import { LovedMoviesPres } from './LovedMoviesPres';
 import { useUserContext } from '../context/Context';
 import { MovieCardProps } from './cards/MovieCard';
 import { ButtonLoadMore } from './buttons/ButtonLoadMore';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 import { StartFromSwipingCard } from './cards/StartFromSwipingCard';
 
 const fetchMotionPicture = (url: string) => axios.get(`${http_url}/loved/${url}`);

@@ -25,6 +25,7 @@ pylint = "*"
 rfc3986 = "*"
 mayim = "*"
 pydantic = "*"
+aiosqlite = "*"
 
 [dev-packages]
 

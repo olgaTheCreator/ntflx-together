@@ -5,7 +5,7 @@ import { LovedMoviesPres } from './LovedMoviesPres';
 import { useUserContext } from '../context/Context';
 import { MovieCardProps } from './cards/MovieCard';
 import { ButtonLoadMore } from './buttons/ButtonLoadMore';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 import { useParams } from 'react-router-dom';
 import { AddFriendFirstCard } from './cards/AddFriendFirstCard';
 import { FriendsState } from './FriendsContainer';

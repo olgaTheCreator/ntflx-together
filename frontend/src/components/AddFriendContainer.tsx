@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 import { useEffect, useState } from 'react';
 import { AddFriendPres } from './AddFriendPres';
 import { Friend } from './FriendsContainer';

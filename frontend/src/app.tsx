@@ -10,7 +10,6 @@ import { RegisterUserContainer } from './components/RegisterUserContainer';
 import { RegisterUserSuccess } from './components/RegisterUserSuccess';
 import { UserContext } from './context/Context';
 import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
-import { WatchTogetherContainer } from './components/WatchTogetherContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
 import { AddFriendContainer } from './components/AddFriendContainer';
 import { AddFriendFirstCard } from './components/cards/AddFriendFirstCard';

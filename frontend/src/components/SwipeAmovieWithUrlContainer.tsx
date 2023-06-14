@@ -5,7 +5,7 @@ import { useUserContext } from '../context/Context';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
 import { useParams, useNavigate } from 'react-router-dom';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 
 // interface SwipeAMovieContainerProps {
 //   imdb_id: string | undefined;

@@ -4,7 +4,7 @@ import { SwipeAmoviePres } from './SwipeAmoviePres';
 import { useUserContext } from '../context/Context';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 
 const fetchMotionPicture = (url: string) => axios.get(`${http_url}/users/${url}`);
 // .then((res) => res.data);

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { FormikHelpers } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { http_url } from '../context/Url';
+import { http_url } from '../context/Url_back';
 
 const uuid_private = uuidv4();
 const uuid_public = uuidv4();
