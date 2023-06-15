@@ -14,5 +14,11 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "python.formatting.provider": "none"
+  "python.formatting.provider": "none",
+  "prettier.prettierPath": "./node_modules/prettier",
+  "prettier.jsxSingleQuote": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.singleQuote": true,
+  "markdown.preview.doubleClickToSwitchToEditor": true,
+  "editor.formatOnSave": true
 }

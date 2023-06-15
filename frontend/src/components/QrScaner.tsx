@@ -22,7 +22,7 @@ export const QrScaner = () => {
   return (
     <div>
       <div id="reader"></div>
-      <p>{scanData}</p>
+      {scanData && (<p className='p-4 text-lg underline'><a href={scanData}>{scanData}</a></p>)}
     </div>
   );
 };

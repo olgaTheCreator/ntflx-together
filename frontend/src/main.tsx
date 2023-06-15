@@ -14,7 +14,7 @@ if (container) {
   const root = createRoot(container);
   root.render(
     <CookiesProvider>
-      <BrowserRouter basename="/together">
+      <BrowserRouter basename="/together/">
         <App />
       </BrowserRouter>
     </CookiesProvider>,

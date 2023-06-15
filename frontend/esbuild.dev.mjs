@@ -4,6 +4,7 @@ let ctx = await esbuild.context({
   entryPoints: ['./src/main.tsx'],
   bundle: true,
   outdir: './dist',
+  sourcemap: false,
   loader: {
     '.png': 'file',
     '.jpg': 'file',
