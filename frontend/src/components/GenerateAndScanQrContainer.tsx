@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import QRCode from 'react-qr-code';
 import { AccordionQr } from './AccordionQr';
-import { useUserContext } from '../context/Context';
+import { useUserContext } from '../context/UserContext';
 import { QrScaner } from './QrScaner';
 import { FriendsContainer } from './FriendsContainer';
 import { FriendsState } from './FriendsContainer';
@@ -16,11 +16,12 @@ export const GenerateAndScanQrContainer = (props: FriendsState) => {
   return (
     <div className="flex flex-col justify-center gap-5 p-5">
       <AccordionQr title="Share your URL" index={1} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
-       <ShareYourUrl />
+        <ShareYourUrl />
       </AccordionQr>
       <AccordionQr title="Scan a Friend" index={2} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
-        <div className='text-blue-500'><QrScaner /></div>
-        
+        <div className="text-blue-500">
+          <QrScaner />
+        </div>
       </AccordionQr>
       <AccordionQr title="Friends" index={3} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
         <div className="">

@@ -8,7 +8,7 @@ import { SwipeAmovieWithUrlContainer } from './components/SwipeAmovieWithUrlCont
 import { NavBottomContainer } from './components/NavBottomContainer';
 import { RegisterUserContainer } from './components/RegisterUserContainer';
 import { RegisterUserSuccess } from './components/RegisterUserSuccess';
-import { UserContext } from './context/Context';
+import { UserContext } from './context/UserContext';
 import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
 import { AddFriendContainer } from './components/AddFriendContainer';

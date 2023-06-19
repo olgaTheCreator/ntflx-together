@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { http_url } from '../context/Url_back';
 import { useEffect, useState } from 'react';
 import { AddFriendPres } from './AddFriendPres';
 import { Friend } from './FriendsContainer';
 import { useFriend } from './FriendsContainer';
+import { useUserContext } from '../context/UserContext';
 
 const fetchFriendName = (url: string | undefined) => axios.get(`${http_url}/user/${url}`);
 
@@ -13,6 +14,7 @@ export const AddFriendContainer = () => {
   const params = useParams();
   const [friend, setFriend] = useState<Friend>({ username: '', uuid: '' });
   const { friends, setFriends } = useFriend();
+  const { uuid_public } = useUserContext();
 
   const handleAddFriend = (friend: Friend) => {
     const newFriends = [...friends, friend];
@@ -28,15 +30,17 @@ export const AddFriendContainer = () => {
         setFriend({ username: response.data.username, uuid: response.data.public_uuid });
       })
       .catch((e) => console.log(e));
-  }, [params.uuid_friend]);
+  }, []);
 
-  console.log(friends);
+  console.log('friends', friends, friend);
 
-  return (
-    <div>
-      {!friends.some((f) => f.uuid === friend.uuid) && (
-        <AddFriendPres friend={friend} handleAddFriend={handleAddFriend} />
-      )}
-    </div>
-  );
+  if (params.uuid_friend !== uuid_public) {
+    return (
+      <div>
+        {!friends.some((f) => f.uuid === friend.uuid) && (
+          <AddFriendPres friend={friend} handleAddFriend={handleAddFriend} />
+        )}
+      </div>
+    );
+  }
 };

@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import axios from 'axios';
 import { SwipeAmoviePres } from './SwipeAmoviePres';
-import { useUserContext } from '../context/Context';
+import { useUserContext } from '../context/UserContext';
 import { useEffect, useState } from 'react';
 import { MovieCardProps } from './cards/MovieCard';
 import { useParams, useNavigate } from 'react-router-dom';

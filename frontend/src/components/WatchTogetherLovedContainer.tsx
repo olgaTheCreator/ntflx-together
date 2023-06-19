@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { LovedMoviesPres } from './LovedMoviesPres';
-import { useUserContext } from '../context/Context';
+import { useUserContext } from '../context/UserContext';
 import { MovieCardProps } from './cards/MovieCard';
 import { ButtonLoadMore } from './buttons/ButtonLoadMore';
 import { http_url } from '../context/Url_back';
