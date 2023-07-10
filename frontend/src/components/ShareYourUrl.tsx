@@ -25,8 +25,8 @@ export const ShareYourUrl = () => {
           viewBox={`0 0 256 256`}
         />
       </div>
-      <div className="flex place-items-start justify-between px-2 text-blue-500">
-        <div className="break-words px-4 pb-4">{QrValue}</div>
+      <div className="flex place-items-start justify-between px-2 text-blue-500 relative">
+        <div className="break-words px-2 pb-4 w-4/5 ">{QrValue}</div>
         <ButtonCopy handleCopy={copyTextToClipboard(QrValue)} />
       </div>
     </>

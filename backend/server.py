@@ -31,6 +31,7 @@ async def setup_mayim(app: Sanic):
     await executor.create_table_motion_pictures()
     await executor.create_table_users()
     await executor.create_table_swiped_movies()
+    await executor.create_table_friends()
 
 
 @app.after_server_stop
@@ -63,6 +64,24 @@ async def by_imdb(request: Request,imdb_id: str, executor: PicturesExecutor):
 async def friend_data(request: Request, user_uuid: UUID, executor: PicturesExecutor):
     user_data = await executor.select_user(str(user_uuid))
     return json({"username": user_data.username,"public_uuid": str(user_data.uuid_public)})
+
+@app.get("/friends/<user_uuid:str>")
+async def friends_data(request: Request, user_uuid: UUID, executor: PicturesExecutor):
+    friends = await executor.select_friends(str(user_uuid))
+    return json({"friends": [{"username": friend.username, "uuid_public": str(friend.uuid_public)} for friend in friends]})
+
+@app.post("/friends/<user_uuid:str>")
+async def add_friend(request: Request, user_uuid: UUID, executor: PicturesExecutor):
+    friend = request.json
+    action = friend["action"]
+    friend_uuid = str(friend["uuid_friend"])
+    if action == "add":
+        await executor.insert_friend(str(user_uuid), friend_uuid)
+        return json({'message': 'Friend added'})
+    elif action == "remove":
+        await executor.delete_friend(str(user_uuid), friend_uuid)
+        return json({'message': 'Friend removed'})
+    
 
 # @app.route("/single")
 # async def single(request: Request, executor: PicturesExecutor):

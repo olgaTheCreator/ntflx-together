@@ -8,6 +8,10 @@ import { useFriend } from './FriendsContainer';
 import { useUserContext } from '../context/UserContext';
 
 const fetchFriendName = (url: string | undefined) => axios.get(`${http_url}/user/${url}`);
+const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: "add" | "remove") =>
+axios.post(`${http_url}/friends/${uuid_public}`,
+{ uuid_friend: uuid_friend, action: action},
+{ headers: { 'Content-Type': 'application/json' } })
 
 export const AddFriendContainer = () => {
   const navigate = useNavigate();
@@ -17,9 +21,7 @@ export const AddFriendContainer = () => {
   const { uuid_public } = useUserContext();
 
   const handleAddFriend = (friend: Friend) => {
-    const newFriends = [...friends, friend];
-    setFriends(newFriends);
-    localStorage.setItem('friends', JSON.stringify(newFriends));
+   handleFriend(uuid_public, friend.uuid, "add")
     console.log('friend added');
     navigate('/qr');
   };
@@ -32,7 +34,6 @@ export const AddFriendContainer = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  console.log('friends', friends, friend);
 
   if (params.uuid_friend !== uuid_public) {
     return (

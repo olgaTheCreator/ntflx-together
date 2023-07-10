@@ -44,7 +44,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
             title={title}
           >
             {' '}
-            <img className=" absolute left-0 top-0 ml-1 max-h-10 object-scale-down" src={`/${img}`} alt="Netflix logo" />
+            <img className=" absolute left-0 top-0 ml-1 max-h-10 object-scale-down" src={img} alt="Netflix logo" />
           </div>
         </button>
         <div className="flex w-1/2 flex-col justify-between px-2 leading-normal">

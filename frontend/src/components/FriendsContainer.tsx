@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FriendsPres } from './FriendsPres';
 import { Outlet, useOutletContext } from 'react-router-dom';
+import axios from 'axios';
+import { http_url } from '../context/Url_back';
+import { useUserContext } from '../context/UserContext';
 
 export interface Friend {
   username: string;
@@ -12,23 +15,21 @@ export interface FriendsState {
   setFriends: React.Dispatch<React.SetStateAction<Friend[]>>;
 }
 
+const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: "add" | "remove") =>
+axios.post(`${http_url}/friends/${uuid_public}`,
+{ uuid_friend: uuid_friend, action: action},
+{ headers: { 'Content-Type': 'application/json' } })
+
 export const FriendsContainer = (props: FriendsState) => {
   const { friends, setFriends } = props;
+  const {uuid_public} = useUserContext();
 
   const handleRemoveFriend = (friend: Friend) => {
-    const newFriends = friends.filter((fri) => fri.uuid != friend.uuid);
-    setFriends(newFriends);
-    localStorage.setItem('friends', JSON.stringify(newFriends));
+    handleFriend(uuid_public, friend.uuid, "remove")
     console.log('friend removed');
   };
 
-  const handleLastFriend = (friend: Friend) => {
-    const newFriends = friends.filter((fri) => fri.uuid != friend.uuid);
-    const lastFriendAtIndexZero = [friend, ...newFriends];
-    setFriends(lastFriendAtIndexZero);
-    localStorage.setItem('friends', JSON.stringify(lastFriendAtIndexZero));
-    console.log('friends updated');
-  };
+
 
   return (
     <div className="p-5">
@@ -40,7 +41,7 @@ export const FriendsContainer = (props: FriendsState) => {
       )}
       {friends.map((friend) => (
         <FriendsPres
-          handleLastFriend={handleLastFriend}
+          // handleLastFriend={handleLastFriend}
           handleRemoveFriend={handleRemoveFriend}
           friend={friend}
           key={friend.uuid}

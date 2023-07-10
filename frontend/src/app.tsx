@@ -13,6 +13,8 @@ import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContai
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
 import { AddFriendContainer } from './components/AddFriendContainer';
 import { AddFriendFirstCard } from './components/cards/AddFriendFirstCard';
+import axios from 'axios';
+import { http_url } from './context/Url_back';
 
 //eslint-disable-next-line no-undef, no-restricted-globals
 //new EventSource('/esbuild').addEventListener('change', () => location.reload());
@@ -21,16 +23,20 @@ export interface Friend {
   uuid: string;
 }
 
+const fetchFriends = (url: string | undefined) => axios.get(`${http_url}/friends/${url}`);
+
 export function App() {
   const [friends, setFriends] = React.useState<Array<Friend>>([]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('friends');
-    if (saved) {
-      const initial = JSON.parse(saved);
-      setFriends(initial);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const saved = localStorage.getItem('friends');
+  //   if (saved) {
+  //     const initial = JSON.parse(saved);
+  //     setFriends(initial);
+  //   }
+  // }, []);
+
+
 
   const [cookies, setCookie] = useCookies([
     'ntflx_together_username',
@@ -56,6 +62,11 @@ export function App() {
     uuid_public: cookies.ntflx_together_uuid_public,
   };
 
+  useEffect (() => {
+    fetchFriends(user.uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e));
+
+  },[])
+  
   return (
     <UserContext.Provider value={user}>
       <div className="flex h-screen max-w-full flex-col justify-start overflow-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
