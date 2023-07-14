@@ -68,7 +68,7 @@ async def friend_data(request: Request, user_uuid: UUID, executor: PicturesExecu
 @app.get("/friends/<user_uuid:str>")
 async def friends_data(request: Request, user_uuid: UUID, executor: PicturesExecutor):
     friends = await executor.select_friends(str(user_uuid))
-    return json({"friends": [{"username": friend.username, "uuid_public": str(friend.uuid_public)} for friend in friends]})
+    return json({"friends": [{"username": friend.username, "uuid": str(friend.uuid_public)} for friend in friends]})
 
 @app.post("/friends/<user_uuid:str>")
 async def add_friend(request: Request, user_uuid: UUID, executor: PicturesExecutor):
@@ -77,6 +77,7 @@ async def add_friend(request: Request, user_uuid: UUID, executor: PicturesExecut
     friend_uuid = str(friend["uuid_friend"])
     if action == "add":
         await executor.insert_friend(str(user_uuid), friend_uuid)
+        await executor.insert_user_as_friend(str(user_uuid), friend_uuid)
         return json({'message': 'Friend added'})
     elif action == "remove":
         await executor.delete_friend(str(user_uuid), friend_uuid)

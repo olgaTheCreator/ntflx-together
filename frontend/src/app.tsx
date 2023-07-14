@@ -23,20 +23,10 @@ export interface Friend {
   uuid: string;
 }
 
-const fetchFriends = (url: string | undefined) => axios.get(`${http_url}/friends/${url}`);
+export const fetchFriends = (url: string | undefined) => axios.get(`${http_url}/friends/${url}`);
 
 export function App() {
   const [friends, setFriends] = React.useState<Array<Friend>>([]);
-
-  // useEffect(() => {
-  //   const saved = localStorage.getItem('friends');
-  //   if (saved) {
-  //     const initial = JSON.parse(saved);
-  //     setFriends(initial);
-  //   }
-  // }, []);
-
-
 
   const [cookies, setCookie] = useCookies([
     'ntflx_together_username',
@@ -64,12 +54,11 @@ export function App() {
 
   useEffect (() => {
     fetchFriends(user.uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e));
-
-  },[])
+},[])
   
   return (
     <UserContext.Provider value={user}>
-      <div className="flex h-screen max-w-full flex-col justify-start overflow-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
+      <div className="flex h-screen max-w-full flex-col justify-start overflow-y-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
         <Routes>
           <Route path="/" element={<SwipeAmovieContainer />} />
           <Route path="movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />

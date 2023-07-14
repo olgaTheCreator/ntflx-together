@@ -3,7 +3,7 @@ import { ButtonAddFriend } from '../buttons/ButtonAddFriend';
 
 export const AddFriendFirstCard = () => {
   return (
-    <div className="mx-auto mt-5 w-full max-w-xs rounded bg-orange px-5 py-16">
+    <div className="mx-auto mt-5 w-full max-w-xs rounded bg-orange px-5 py-16 lg:max-w-3xl">
       <h1 className="text-center text-3xl font-medium text-blue-500">Choose a friend first</h1>
       <div className="mt-5 text-info-500">
         <NavLink to="/./qr">

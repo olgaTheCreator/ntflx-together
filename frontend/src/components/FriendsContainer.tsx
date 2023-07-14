@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FriendsPres } from './FriendsPres';
-import { Outlet, useOutletContext } from 'react-router-dom';
+import { Outlet, useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import { http_url } from '../context/Url_back';
 import { useUserContext } from '../context/UserContext';
@@ -15,19 +15,43 @@ export interface FriendsState {
   setFriends: React.Dispatch<React.SetStateAction<Friend[]>>;
 }
 
+const fetchFriends = (url: string | undefined) => axios.get(`${http_url}/friends/${url}`);
+
 const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: "add" | "remove") =>
+
 axios.post(`${http_url}/friends/${uuid_public}`,
 { uuid_friend: uuid_friend, action: action},
 { headers: { 'Content-Type': 'application/json' } })
 
+
 export const FriendsContainer = (props: FriendsState) => {
   const { friends, setFriends } = props;
   const {uuid_public} = useUserContext();
+  const navigate = useNavigate();
 
-  const handleRemoveFriend = (friend: Friend) => {
-    handleFriend(uuid_public, friend.uuid, "remove")
+  useEffect (() => {
+    let id = setInterval(() => fetchFriends(uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e)), 1000)
+    return clearInterval(id)
+},[])
+
+  console.log(friends)
+
+
+  const handleRemoveFriend = (friend_uuid:string) => {
+    handleFriend(uuid_public, friend_uuid, "remove")
     console.log('friend removed');
+    const lastFriend = localStorage.getItem("last_friend")
+    const storedFriend: Friend = lastFriend? JSON.parse(lastFriend): {} 
+    if (storedFriend.uuid === friend_uuid) {
+      localStorage.removeItem("last_friend")
+    }
+    fetchFriends(uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e));
+    navigate('/qr');
   };
+
+  const handleLastFriend = (friend:Friend) => {
+    localStorage.setItem("last_friend", JSON.stringify(friend))
+  }
 
 
 
@@ -39,12 +63,12 @@ export const FriendsContainer = (props: FriendsState) => {
       ) : (
         ''
       )}
-      {friends.map((friend) => (
+      {friends.map((frie) => (
         <FriendsPres
-          // handleLastFriend={handleLastFriend}
+          handleLastFriend={handleLastFriend}
           handleRemoveFriend={handleRemoveFriend}
-          friend={friend}
-          key={friend.uuid}
+          friend={frie}
+          key={frie.uuid}
         />
       ))}
     </div>

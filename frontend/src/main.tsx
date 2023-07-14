@@ -6,7 +6,7 @@ import { App } from './app';
 import { http_url_front } from './context/Url_front';
 
 // eslint-disable-next-line no-undef, no-restricted-globals
-new EventSource(`${http_url_front}/esbuild`).addEventListener('change', () => location.reload());
+// new EventSource(`${http_url_front}/esbuild`).addEventListener('change', () => location.reload());
 
 const container = document.getElementById('root');
 

@@ -34,9 +34,9 @@ export const MovieCard = (props: MovieCardProps) => {
   });
   return (
     <>
-      <div className="relative m-5 flex h-9/10 flex-col">
-        <div {...handlers} style={{ touchAction: 'pan-x' }} className="relative h-4/5 md:h-7/8">
-          <img className="max-h-full rounded-md md:object-cover lg:object-cover" src={poster_url_780} alt={title} />
+      <div className="relative m-5 lg:my-5 lg:mx-0 flex h-9/10 flex-col">
+        <div {...handlers} style={{ touchAction: 'pan-x' }} className="relative h-4/5 md:h-7/8 lg:max-w-lg">
+          <img className="max-h-full rounded-md md:object-cover lg:object-cover lg:max-w-lg" src={poster_url_780} alt={title} />
           <div className="absolute top-0 h-1/3 w-full  bg-gradient-to-b from-black opacity-50 "></div>
           <SwipeButtonGroup handleSwipe={handleSwipe} />
         </div>
@@ -48,7 +48,7 @@ export const MovieCard = (props: MovieCardProps) => {
             <p className="mt-2 line-clamp-2 text-2xl font-semibold">{title_h2}</p>
           </div>
         </div>
-        <div className="flex items-center justify-end divide-x-2 divide-white pb-4 text-white">
+        <div className="flex items-center justify-end lg:justify-center divide-x-2 divide-white pb-4 text-white">
           <form action={link} method="get">
             <ButtonPlay />
           </form>

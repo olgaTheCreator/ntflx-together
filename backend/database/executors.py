@@ -26,6 +26,9 @@ class PicturesExecutor(SQLiteExecutor):
     async def insert_friend(self,uuid_public: str, friend_uuid: str) -> None: #pylint: disable=W06
         """add friend into table"""
 
+    async def insert_user_as_friend(self,uuid_public: str, friend_uuid: str) -> None: #pylint: disable=W06
+        """add friend as user into table to represent mutual friendship"""
+
     async def insert_swiped_movie(self, uuid_public: str, imdb_id: str, liked: int) -> None: #pylint: disable=W06
         """add swiped movie into table"""
 

@@ -6,6 +6,7 @@ import { AddFriendPres } from './AddFriendPres';
 import { Friend } from './FriendsContainer';
 import { useFriend } from './FriendsContainer';
 import { useUserContext } from '../context/UserContext';
+import { fetchFriends } from '../app';
 
 const fetchFriendName = (url: string | undefined) => axios.get(`${http_url}/user/${url}`);
 const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: "add" | "remove") =>
@@ -19,10 +20,12 @@ export const AddFriendContainer = () => {
   const [friend, setFriend] = useState<Friend>({ username: '', uuid: '' });
   const { friends, setFriends } = useFriend();
   const { uuid_public } = useUserContext();
+  
 
   const handleAddFriend = (friend: Friend) => {
    handleFriend(uuid_public, friend.uuid, "add")
     console.log('friend added');
+    fetchFriends(uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e))
     navigate('/qr');
   };
 

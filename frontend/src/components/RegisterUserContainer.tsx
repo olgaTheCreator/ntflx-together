@@ -45,9 +45,9 @@ export const RegisterUserContainer = ({ setCookie }: RegisterUserProps) => {
       const response = await registerUser(values);
       console.log(response.data);
       if (response.status === 200) {
-        setCookie('ntflx_together_username', values.username, { maxAge: 2592000, sameSite: true });
-        setCookie('ntflx_together_uuid_public', values.uuid_public, { maxAge: 2592000, sameSite: true });
-        setCookie('ntflx_together_uuid_private', values.uuid_private, { maxAge: 2592000, sameSite: true });
+        setCookie('ntflx_together_username', values.username, { maxAge: 34560000, sameSite: true });
+        setCookie('ntflx_together_uuid_public', values.uuid_public, { maxAge: 34560000, sameSite: true });
+        setCookie('ntflx_together_uuid_private', values.uuid_private, { maxAge: 34560000, sameSite: true });
       }
     } catch (error) {
       console.log(error);

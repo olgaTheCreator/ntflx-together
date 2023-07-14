@@ -17,7 +17,7 @@ export const ShareYourUrl = () => {
 
   return (
     <>
-      <div className="px-8 pb-4 pt-8">
+      <div className="px-8 pb-4 pt-8 max-w-sm">
         <QRCode
           size={256}
           style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
