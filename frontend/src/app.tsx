@@ -59,7 +59,7 @@ export function App() {
   return (
     <UserContext.Provider value={user}>
       <div className="flex h-screen max-w-full flex-col justify-start overflow-y-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
-        <Routes>
+        <div className='lg:mt-24 max-w-full '><Routes>
           <Route path="/" element={<SwipeAmovieContainer />} />
           <Route path="movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
           <Route path="loved" element={<LovedMoviesContainer />} />
@@ -75,7 +75,7 @@ export function App() {
               element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />}
             />
           </Route>
-        </Routes>
+        </Routes></div>
 
         <NavBottomContainer />
       </div>

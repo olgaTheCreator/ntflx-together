@@ -34,21 +34,21 @@ export const MovieCard = (props: MovieCardProps) => {
   });
   return (
     <>
-      <div className="relative m-5 lg:my-5 lg:mx-0 flex h-9/10 flex-col">
-        <div {...handlers} style={{ touchAction: 'pan-x' }} className="relative h-4/5 md:h-7/8 lg:max-w-lg">
-          <img className="max-h-full rounded-md md:object-cover lg:object-cover lg:max-w-lg" src={poster_url_780} alt={title} />
+      <div className="relative m-5 lg:my-5 lg:mx-auto flex h-9/10 flex-col lg:w-1/2 2xl:max-w-2xl 2xl:w-full 2xl:items-center">
+        <div {...handlers} style={{ touchAction: 'pan-x' }} className="relative h-4/5 md:h-7/8 lg:w-full lg:h-full 2xl:max-w-lg">
+          <img className="rounded-md md:object-cover lg:object-contain object-bottom " src={poster_url_780} alt={title} />
           <div className="absolute top-0 h-1/3 w-full  bg-gradient-to-b from-black opacity-50 "></div>
           <SwipeButtonGroup handleSwipe={handleSwipe} />
         </div>
 
-        <div className="mt-5 flex h-32 justify-start py-4 text-white">
+        <div className="mt-5 flex h-32 justify-start py-4 text-white 2xl:w-full">
           <img className="mr-5 max-h-20 basis-3/4 object-scale-down" src={img} alt="Netflix logo" />
           <div className="h-full basis-1/2 pl-1">
             <h1 className="text-3xl font-semibold">{title_h1}</h1>
             <p className="mt-2 line-clamp-2 text-2xl font-semibold">{title_h2}</p>
           </div>
         </div>
-        <div className="flex items-center justify-end lg:justify-center divide-x-2 divide-white pb-4 text-white">
+        <div className="flex items-center justify-end  divide-x-2 divide-white pb-4 text-white 2xl:w-full">
           <form action={link} method="get">
             <ButtonPlay />
           </form>

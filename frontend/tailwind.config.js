@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './dist/index.html', './src/components/**/*.tsx'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './dist/index.html', './src/components/**/*.tsx','./src/components/cards/*.tsx'],
   safelist: [
     {
       pattern: /bg-(red|green|blue)-(100|500|700)/,
@@ -25,6 +25,9 @@ module.exports = {
         '1/2': '50%',
         '3/4': '75%',
         full: '100%',
+      },
+      width: {
+        '86': '22.5rem',
       },
       colors: {
         blue: {

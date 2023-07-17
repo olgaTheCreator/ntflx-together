@@ -14,7 +14,7 @@ export const GenerateAndScanQrContainer = (props: FriendsState) => {
   const handleSetIndex = (index: number) => setActiveIndex(index === activeIndex ? 2 : index);
 
   return (
-    <div className="flex flex-col justify-center gap-5 p-5 lg:py-5 lg:px-0 w-full lg:max-w-3xl  md:mx-auto">
+    <div className="flex flex-col justify-center gap-5 p-5 lg:py-5 lg:px-0 w-full lg:max-w-4xl  md:mx-auto">
       <AccordionQr title="Share your URL" index={1} activeIndex={activeIndex} handleSetIndex={handleSetIndex}>
         <ShareYourUrl />
       </AccordionQr>

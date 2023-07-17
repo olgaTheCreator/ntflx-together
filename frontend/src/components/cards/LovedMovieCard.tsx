@@ -36,7 +36,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
 
   return (
     <>
-      <div key={key} className=" flex w-full p-3 lg:py-4 lg:px-0 max-w-sm gap-3">
+      <div key={key} className=" flex w-full p-3 lg:py-4 lg:px-0 max-w-sm md:max-w-md gap-3 lg:max-w-sm">
         <button onClick={handleClickPoster(imdb_id)}>
           <div
             className="relative ml-3 lg:ml-0 h-48 w-36 flex-none overflow-hidden rounded-md bg-cover bg-center text-center lg:h-64 lg:w-48 lg:rounded-l lg:rounded-t-none"
@@ -48,7 +48,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
           </div>
         </button>
         <div className="flex w-1/2 flex-col justify-between px-2 leading-normal">
-          <div className="h-fulljustify-center overflow-x-hidden text-white">
+          <div className="h-full justify-center overflow-x-hidden text-white">
             <h1 className="break-words pl-1 text-left text-xl font-medium">{title}</h1>
           </div>
           <div className="flex h-11 place-self-end text-white">
