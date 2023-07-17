@@ -12,15 +12,13 @@ export const FriendsPres = ({
   handleLastFriend,
 }: {
   friend: Friend;
-  handleRemoveFriend: (friend_uuid:string) => void;
+  handleRemoveFriend: (friend_uuid: string) => void;
   handleLastFriend: (friend: Friend) => void;
 }) => {
   return (
     <div className="mx-auto mb-4 grid w-full max-w-xs grid-cols-2 gap-4 rounded border-2 border-blue-500 bg-orange p-3 text-xl text-blue-500">
       <Link to={`../watch-together/${friend.uuid}`}>
-        <button 
-        onClick={() => handleLastFriend(friend)} 
-        className="h-full w-full font-bold underline">
+        <button onClick={() => handleLastFriend(friend)} className="h-full w-full font-bold underline">
           {friend.username}
         </button>
       </Link>

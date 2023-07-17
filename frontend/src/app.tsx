@@ -52,30 +52,36 @@ export function App() {
     uuid_public: cookies.ntflx_together_uuid_public,
   };
 
-  useEffect (() => {
-    fetchFriends(user.uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e));
-},[])
-  
+  useEffect(() => {
+    fetchFriends(user.uuid_public)
+      .then((response) => {
+        setFriends(response.data.friends);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <UserContext.Provider value={user}>
       <div className="flex h-screen max-w-full flex-col justify-start overflow-y-scroll bg-blue-500 font-poppins text-white lg:h-screen-small">
-        <div className='lg:mt-24 max-w-full '><Routes>
-          <Route path="/" element={<SwipeAmovieContainer />} />
-          <Route path="movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
-          <Route path="loved" element={<LovedMoviesContainer />} />
-          <Route path="register" element={<RegisterUserContainer setCookie={setCookie} />} />
-          <Route path="success" element={<RegisterUserSuccess />} />
-          <Route path="qr" element={<GenerateAndScanQrContainer friends={friends} setFriends={setFriends} />}>
-            <Route path=":uuid_friend" element={<AddFriendContainer />} />
-          </Route>
-          <Route path="watch-together">
-            <Route index element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />} />
-            <Route
-              path=":uuid_friend"
-              element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />}
-            />
-          </Route>
-        </Routes></div>
+        <div className="max-w-full lg:mt-24 ">
+          <Routes>
+            <Route path="/" element={<SwipeAmovieContainer />} />
+            <Route path="movie/:imdb_id" element={<SwipeAmovieWithUrlContainer />} />
+            <Route path="loved" element={<LovedMoviesContainer />} />
+            <Route path="register" element={<RegisterUserContainer setCookie={setCookie} />} />
+            <Route path="success" element={<RegisterUserSuccess />} />
+            <Route path="qr" element={<GenerateAndScanQrContainer friends={friends} setFriends={setFriends} />}>
+              <Route path=":uuid_friend" element={<AddFriendContainer />} />
+            </Route>
+            <Route path="watch-together">
+              <Route index element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />} />
+              <Route
+                path=":uuid_friend"
+                element={<WatchTogetherLovedContainer friends={friends} setFriends={setFriends} />}
+              />
+            </Route>
+          </Routes>
+        </div>
 
         <NavBottomContainer />
       </div>

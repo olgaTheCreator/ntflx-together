@@ -8,7 +8,7 @@ import { ButtonNavQr } from './buttons/ButtonNavQr';
 export const NavBottomPres = () => {
   const activeLink = 'opacity-100 bg-orange-600 w-full rounded-t-md h-14 ring-2 ring-orange-300 ring-inset';
   return (
-    <div className="z-2 fixed bottom-0 lg:top-0  grid h-14 w-full lg:border-t-8 border-blue-500 grid-cols-1 place-items-center md:h-14 lg:bg-blue-500">
+    <div className="z-2 fixed bottom-0 grid  h-14 w-full grid-cols-1 place-items-center border-blue-500 md:h-14 lg:top-0 lg:border-t-8 lg:bg-blue-500">
       <div className="grid h-full w-full grid-cols-4  place-items-end text-blue-500 lg:max-w-4xl">
         <NavLink to="./" className={({ isActive }) => (isActive ? activeLink : 'h-12 w-full bg-orange')}>
           <ButtonNavSwipe />

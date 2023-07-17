@@ -19,7 +19,7 @@ export const AddFriendPres = (props: AddFriendProps) => {
       <div className="flex-xol flex place-items-center justify-around pl-3">
         <button
           onClick={() => handleAddFriend(friend)}
-          className="h-9 w-12 rounded-md bg-red-500 px-3 text-base text-center text-black transition-colors duration-150 md:h-12 lg:hover:bg-red-700"
+          className="h-9 w-12 rounded-md bg-red-500 px-3 text-center text-base text-black transition-colors duration-150 md:h-12 lg:hover:bg-red-700"
         >
           Yes
         </button>

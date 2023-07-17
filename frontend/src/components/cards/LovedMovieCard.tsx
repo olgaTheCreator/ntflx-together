@@ -36,15 +36,19 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
 
   return (
     <>
-      <div key={key} className=" flex w-full p-3 lg:py-4 lg:px-0 max-w-sm md:max-w-md gap-3 lg:max-w-sm">
+      <div key={key} className=" flex w-full max-w-sm gap-3 p-3 md:max-w-md lg:max-w-sm lg:px-0 lg:py-4">
         <button onClick={handleClickPoster(imdb_id)}>
           <div
-            className="relative ml-3 lg:ml-0 h-48 w-36 flex-none overflow-hidden rounded-md bg-cover bg-center text-center lg:h-64 lg:w-48 lg:rounded-l lg:rounded-t-none"
+            className="relative ml-3 h-48 w-36 flex-none overflow-hidden rounded-md bg-cover bg-center text-center lg:ml-0 lg:h-64 lg:w-48 lg:rounded-l lg:rounded-t-none"
             style={{ backgroundImage: `url(${poster_url_780})` }}
             title={title}
           >
             {' '}
-            <img className=" absolute left-0 top-0 ml-1 lg:ml-0 max-h-10 object-scale-down" src={img} alt="Netflix logo" />
+            <img
+              className=" absolute left-0 top-0 ml-1 max-h-10 object-scale-down lg:ml-0"
+              src={img}
+              alt="Netflix logo"
+            />
           </div>
         </button>
         <div className="flex w-1/2 flex-col justify-between px-2 leading-normal">

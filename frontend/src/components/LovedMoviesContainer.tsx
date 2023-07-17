@@ -38,7 +38,7 @@ export const LovedMoviesContainer = () => {
 
   if (movies.length > 0) {
     return (
-      <div className="flex flex-col justify-start justify-items-center lg:max-w-4xl md:mx-auto">
+      <div className="flex flex-col justify-start justify-items-center md:mx-auto lg:max-w-4xl">
         <LovedMoviesPres movies={movies.slice(0, loadMoreIndex)} />
         {loadMoreIndex < movies.length && <ButtonLoadMore handleLoadMore={handleLoadMore} />}
       </div>

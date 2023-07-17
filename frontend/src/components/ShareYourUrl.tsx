@@ -17,7 +17,7 @@ export const ShareYourUrl = () => {
 
   return (
     <>
-      <div className="px-8 pb-4 pt-8 max-w-sm">
+      <div className="max-w-sm px-8 pb-4 pt-8">
         <QRCode
           size={256}
           style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
@@ -25,8 +25,8 @@ export const ShareYourUrl = () => {
           viewBox={`0 0 256 256`}
         />
       </div>
-      <div className="flex place-items-start justify-between px-2 text-blue-500 relative">
-        <div className="break-words px-2 pb-4 w-4/5 ">{QrValue}</div>
+      <div className="relative flex place-items-start justify-between px-2 text-blue-500">
+        <div className="w-4/5 break-words px-2 pb-4 ">{QrValue}</div>
         <ButtonCopy handleCopy={copyTextToClipboard(QrValue)} />
       </div>
     </>

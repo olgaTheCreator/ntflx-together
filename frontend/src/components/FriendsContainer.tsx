@@ -17,43 +17,52 @@ export interface FriendsState {
 
 const fetchFriends = (url: string | undefined) => axios.get(`${http_url}/friends/${url}`);
 
-const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: "add" | "remove") =>
-
-axios.post(`${http_url}/friends/${uuid_public}`,
-{ uuid_friend: uuid_friend, action: action},
-{ headers: { 'Content-Type': 'application/json' } })
-
+const handleFriend = (uuid_public: string, uuid_friend: string | undefined, action: 'add' | 'remove') =>
+  axios.post(
+    `${http_url}/friends/${uuid_public}`,
+    { uuid_friend: uuid_friend, action: action },
+    { headers: { 'Content-Type': 'application/json' } },
+  );
 
 export const FriendsContainer = (props: FriendsState) => {
   const { friends, setFriends } = props;
-  const {uuid_public} = useUserContext();
+  const { uuid_public } = useUserContext();
   const navigate = useNavigate();
 
-  useEffect (() => {
-    let id = setInterval(() => fetchFriends(uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e)), 1000)
-    return clearInterval(id)
-},[])
+  useEffect(() => {
+    let id = setInterval(
+      () =>
+        fetchFriends(uuid_public)
+          .then((response) => {
+            setFriends(response.data.friends);
+          })
+          .catch((e) => console.log(e)),
+      1000,
+    );
+    return clearInterval(id);
+  }, []);
 
-  console.log(friends)
+  console.log(friends);
 
-
-  const handleRemoveFriend = (friend_uuid:string) => {
-    handleFriend(uuid_public, friend_uuid, "remove")
+  const handleRemoveFriend = (friend_uuid: string) => {
+    handleFriend(uuid_public, friend_uuid, 'remove');
     console.log('friend removed');
-    const lastFriend = localStorage.getItem("last_friend")
-    const storedFriend: Friend = lastFriend? JSON.parse(lastFriend): {} 
+    const lastFriend = localStorage.getItem('last_friend');
+    const storedFriend: Friend = lastFriend ? JSON.parse(lastFriend) : {};
     if (storedFriend.uuid === friend_uuid) {
-      localStorage.removeItem("last_friend")
+      localStorage.removeItem('last_friend');
     }
-    fetchFriends(uuid_public).then((response)=> {setFriends(response.data.friends)}).catch((e) => console.log(e));
+    fetchFriends(uuid_public)
+      .then((response) => {
+        setFriends(response.data.friends);
+      })
+      .catch((e) => console.log(e));
     navigate('/qr');
   };
 
-  const handleLastFriend = (friend:Friend) => {
-    localStorage.setItem("last_friend", JSON.stringify(friend))
-  }
-
-
+  const handleLastFriend = (friend: Friend) => {
+    localStorage.setItem('last_friend', JSON.stringify(friend));
+  };
 
   return (
     <div className="p-5">
