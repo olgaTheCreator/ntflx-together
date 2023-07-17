@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { boolean } from 'yup';
 
 interface ButtonCopyProps {
   handleCopy: Promise<boolean | void>;

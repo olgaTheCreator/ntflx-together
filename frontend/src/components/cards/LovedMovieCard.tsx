@@ -1,4 +1,3 @@
-import { replace } from 'formik';
 import img from '../../assets/Netflix_Symbol.png';
 import { ButtonPlay } from '../buttons/ButtonPlay';
 import { ButtonShare } from '../buttons/ButtonShare';
@@ -36,7 +35,7 @@ export const LovedMovieCard = (props: MovieCardProps, key: string) => {
 
   return (
     <>
-      <div key={key} className=" flex w-full max-w-sm gap-3 p-3 md:max-w-md lg:max-w-sm lg:px-0 lg:py-4">
+      <div key={key} className=" flex w-full max-w-sm gap-3 p-3 lg:px-0 lg:py-4">
         <button onClick={handleClickPoster(imdb_id)}>
           <div
             className="relative ml-3 h-48 w-36 flex-none overflow-hidden rounded-md bg-cover bg-center text-center lg:ml-0 lg:h-64 lg:w-48 lg:rounded-l lg:rounded-t-none"

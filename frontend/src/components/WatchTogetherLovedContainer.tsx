@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useSWR from 'swr';
 import axios from 'axios';
 import { LovedMoviesPres } from './LovedMoviesPres';
 import { useUserContext } from '../context/UserContext';
@@ -26,7 +25,6 @@ export const WatchTogetherLovedContainer = (props: FriendsState) => {
   useEffect(() => {
     if (params.uuid_friend != undefined || Object.keys(storedFriend).length != 0) {
       fetchMotionPicture(uuid_public, params.uuid_friend == undefined ? storedFriend.uuid : params.uuid_friend)
-        // fetchMotionPicture(uuid_public, uuid_friend)
         .then((response) => {
           setMovies(response.data.movies);
         })

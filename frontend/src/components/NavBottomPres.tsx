@@ -3,7 +3,6 @@ import { ButtonNavFriends } from './buttons/ButtonNavFriends';
 import { NavLink } from 'react-router-dom';
 import { ButtonNavSwipe } from './buttons/ButtonNavSwipe';
 import { ButtonNavQr } from './buttons/ButtonNavQr';
-// const navButtons = [ButtonNavLove];
 
 export const NavBottomPres = () => {
   const activeLink = 'opacity-100 bg-orange-600 w-full rounded-t-md h-14 ring-2 ring-orange-300 ring-inset';
