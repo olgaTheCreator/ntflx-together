@@ -32,15 +32,12 @@ export const RegisterUserPres = (props: RegisterUserPresProps) => {
               name="username"
               component="div"
             />
-            {/* <Field type="email" name="emailAddress" placeholder="Email - optional*" /> */}
             <button
               disabled={!isValid}
               className={`${
                 !isValid ? 'border-red-500 ' : 'border-info-500 hover:bg-info-300 '
               }disabled:bg-red focus:shadow-outline mb-4 mt-8 rounded border-2 bg-white px-4 py-2  font-bold text-blue-500 shadow transition-colors duration-200  focus:outline-none disabled:border-slate-200 disabled:text-slate-500 disabled:shadow-none`}
               type="submit"
-
-              //   {!isValid || Object.keys(touched).length === 0}
             >
               Create user
             </button>

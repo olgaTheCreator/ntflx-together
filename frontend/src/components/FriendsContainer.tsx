@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FriendsPres } from './FriendsPres';
 import { Outlet, useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useSWR from 'swr';
 import axios from 'axios';
 import { LovedMoviesPres } from './LovedMoviesPres';
 import { useUserContext } from '../context/UserContext';
@@ -9,10 +8,6 @@ import { http_url } from '../context/Url_back';
 import { StartFromSwipingCard } from './cards/StartFromSwipingCard';
 
 const fetchMotionPicture = (url: string) => axios.get(`${http_url}/loved/${url}`);
-// .then((res) => {
-//   console.log('data sent');
-//   // return res.data;
-// });
 
 type Movies = Array<MovieCardProps['movie']>;
 type Maybe<T> = T | null;
@@ -29,7 +24,6 @@ export const LovedMoviesContainer = () => {
       })
       .catch((e) => console.log(e));
   }, []);
-  // const { data, error, isLoading } = useSWR(uuid_public, fetchMotionPicture);
   const handleLoadMore = () => {
     setLoadMoreIndex((loadMoreIndex) => loadMoreIndex + 10);
   };

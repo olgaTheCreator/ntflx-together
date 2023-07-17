@@ -12,7 +12,6 @@ import { UserContext } from './context/UserContext';
 import { GenerateAndScanQrContainer } from './components/GenerateAndScanQrContainer';
 import { WatchTogetherLovedContainer } from './components/WatchTogetherLovedContainer';
 import { AddFriendContainer } from './components/AddFriendContainer';
-import { AddFriendFirstCard } from './components/cards/AddFriendFirstCard';
 import axios from 'axios';
 import { http_url } from './context/Url_back';
 

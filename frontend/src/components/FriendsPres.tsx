@@ -1,11 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Friend } from './FriendsContainer';
 
-// interface FriendsPresProps {
-//     friends: Friend[]
-// }
-// const navigate = useNavigate();
-
 export const FriendsPres = ({
   friend,
   handleRemoveFriend,

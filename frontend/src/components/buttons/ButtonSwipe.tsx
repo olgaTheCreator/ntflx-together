@@ -2,7 +2,6 @@ import * as React from 'react';
 
 export interface ButtonSwipeProps {
   children: React.ReactNode;
-  // onClick: React.MouseEventHandler<HTMLElement>;
   handleSwipe: () => Promise<void>;
   variant: 'red' | 'green';
 }

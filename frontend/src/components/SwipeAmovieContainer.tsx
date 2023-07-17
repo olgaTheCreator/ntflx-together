@@ -1,4 +1,3 @@
-import useSWR from 'swr';
 import axios from 'axios';
 import { SwipeAmoviePres } from './SwipeAmoviePres';
 import { useUserContext } from '../context/UserContext';
@@ -7,7 +6,6 @@ import { MovieCardProps } from './cards/MovieCard';
 import { http_url } from '../context/Url_back';
 
 const fetchMotionPicture = (url: string) => axios.get(`${http_url}/users/${url}`);
-// .then((res) => res.data);
 
 const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') => {
   return axios.post(
@@ -20,7 +18,6 @@ const swipeMovie = (uuid_public: string, imdb_id: string, liked: 'yes' | 'no') =
 export const SwipeAmovieContainer = () => {
   const { uuid_public } = useUserContext();
   const [movie, setMovie] = useState<MovieCardProps['movie'] | null>(null);
-  // const { data, error, isLoading } = useSWR(uuid_public != undefined ? uuid_public : 'single', fetchMotionPicture);
   useEffect(() => {
     fetchMotionPicture(uuid_public)
       .then((response) => {
@@ -28,7 +25,6 @@ export const SwipeAmovieContainer = () => {
       })
       .catch((e) => console.log(e));
   }, []);
-  // useEffect(() => (data ? setMovie(data.movie) : undefined), [data]);
   const handleSwipe = (liked: 'yes' | 'no') => async () => {
     try {
       if (movie) {
@@ -41,10 +37,6 @@ export const SwipeAmovieContainer = () => {
     }
   };
 
-  // if (error) {
-  //   return error;
-  // }
-  // if (isLoading || !movie) return <>Is Loading</>;
   if (!movie) return null;
 
   return <SwipeAmoviePres movie={movie} handleSwipe={handleSwipe} />;
