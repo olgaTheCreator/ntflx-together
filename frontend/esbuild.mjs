@@ -5,7 +5,7 @@ await esbuild.build({
   bundle: true,
   minify: true,
   sourcemap: true,
-  target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
+  target: ['chrome60', 'firefox60', 'edge18'],
   loader: {
     '.png': 'file',
     '.jpg': 'file',
