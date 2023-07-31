@@ -14,7 +14,7 @@ from helpers.get_random_movie import get_random_movie
 
 
 app = Sanic("netflix-together")
-app.config.CORS_ORIGINS = ["https://149.102.149.125", "https://149.102.149.125:80", "https://0.0.0.0:8000", "https://olgathecreator.co.uk", "olgathecreator.co.uk"]
+app.config.CORS_ORIGINS = ["https://149.102.149.125", "https://149.102.149.125:80", "http://0.0.0.0:8000", "http://localhost:8000", "https://0.0.0.0:8000", "https://olgathecreator.co.uk", "olgathecreator.co.uk"]
 Extend(app)
 
 # con = sqlite3.connect("movies.db")
@@ -84,11 +84,6 @@ async def add_friend(request: Request, user_uuid: UUID, executor: PicturesExecut
         return json({'message': 'Friend removed'})
     
 
-# @app.route("/single")
-# async def single(request: Request, executor: PicturesExecutor):
-#     movie = await executor.select_results()
-#     return json({"movie": movie[92].dict()})
-
 @app.route("/users/<user_uuid:str>")
 async def user(request: Request, user_uuid: UUID, executor: PicturesExecutor):
     movies = await executor.select_not_swiped_movies(str(user_uuid))
@@ -124,4 +119,4 @@ async def handler(request:Request, body: User):
 
 
 if __name__ == "__main__":
-    app.run(host="149.102.149.125", port=3000, dev=True)
+    app.run(host="0.0.0.0", port=3000, dev=True)

@@ -16,6 +16,7 @@ RUN pip install pipenv && pipenv install --dev --system --deploy
 
 WORKDIR /app
 COPY . /app
+RUN rm /app/database/motion_pictures.db
 
 ENV PYTHONPATH /code
 
@@ -23,7 +24,7 @@ ENV PYTHONPATH /code
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
-EXPOSE 3322
+EXPOSE 3000
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "server.py"]

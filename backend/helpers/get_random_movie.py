@@ -2,7 +2,7 @@ import random
 import sys
 sys.path.append('../..')
 
-from backend.models import MotionPicture
+from models import MotionPicture
 
 def get_random_movie(movies: list[MotionPicture]) -> MotionPicture:
 
